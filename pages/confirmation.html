@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+  BEACON MEDIA — CONFIRMATION PAGE
+  Shown after a qualified applicant is redirected here from the Typeform
+  "qualified" Ending screen. Paste this whole file into a GHL Funnel/Website
+  page's Custom Code (HTML) element, with the page's default header/footer/
+  theme disabled. See /README.md for step-by-step setup.
+
+  QUICK-SWAP CONFIG:
+    1) LOGO — replace the inline SVG+text .logo mark (2 places) with an <img>
+       once the real Beacon logo file is available.
+    2) NEXT-STEP LINK — replace the href="#" on .btn-primary below with your
+       real booking/calendar link (e.g. a GHL calendar embed URL).
+    3) TRACKING PIXELS — paste your Lead/CompleteRegistration conversion
+       event in the marked slot below.
+    4) [PLACEHOLDER: ...] — replace every bracketed placeholder with real copy.
+-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beacon Media — Application Received</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- ========= TRACKING: fire your Lead / CompleteRegistration conversion event here ========= -->
+<!-- ========================================================================================== -->
+
+<style>
+  :root{
+    --color-bg:#ffffff;
+    --color-bg-alt:#eef4ff;
+    --color-border:#e2e8f0;
+    --color-text:#0b1220;
+    --color-text-muted:#5b6472;
+    --color-accent:#2954eb;
+    --color-accent-dark:#1e3fc4;
+    --color-success:#16a34a;
+    --color-footer-bg:#0b1220;
+    --color-footer-text:#cbd5e1;
+    --font-heading:'Manrope', sans-serif;
+    --font-body:'Inter', sans-serif;
+    --radius-lg:24px;
+    --shadow-md:0 20px 40px -20px rgba(15,23,42,.25);
+    --container-w:1120px;
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  body{
+    margin:0;
+    background:var(--color-bg);
+    color:var(--color-text);
+    font-family:var(--font-body);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+  }
+  main{ flex:1; }
+  .container{ width:100%; max-width:var(--container-w); margin:0 auto; padding:0 24px; }
+
+  h1{ font-family:var(--font-heading); margin:0; color:var(--color-text); }
+
+  .logo{ display:inline-flex; align-items:center; gap:8px; text-decoration:none; color:inherit; }
+  .logo svg{ width:16px; height:16px; flex:0 0 auto; }
+  .logo span{ font-family:var(--font-heading); font-weight:800; font-size:18px; letter-spacing:.14em; }
+  .logo--dark svg{ fill:var(--color-text); }
+  .logo--dark span{ color:var(--color-text); }
+  .logo--light svg{ fill:#ffffff; }
+  .logo--light span{ color:#ffffff; }
+
+  .site-header{
+    background:rgba(255,255,255,.9);
+    backdrop-filter:saturate(180%) blur(8px);
+    border-bottom:1px solid var(--color-border);
+  }
+  .header-inner{ display:flex; align-items:center; justify-content:center; padding:18px 24px; }
+
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center;
+    font-family:var(--font-heading); font-weight:700; font-size:16px;
+    padding:16px 32px; border-radius:999px; border:none; cursor:pointer;
+    text-decoration:none; transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+  .btn-primary{ background:var(--color-accent); color:#ffffff; box-shadow:0 12px 24px -8px rgba(41,84,235,.55); }
+  .btn-primary:hover{ background:var(--color-accent-dark); transform:translateY(-1px); }
+
+  .status-section{ padding:96px 0 120px; }
+  .status-card{ max-width:620px; margin:0 auto; text-align:center; }
+  .status-icon{
+    width:64px; height:64px; margin:0 auto 28px;
+    border-radius:50%;
+    background:var(--color-bg-alt);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .status-icon svg{ width:28px; height:28px; }
+  .eyebrow{
+    font-family:var(--font-heading); font-weight:700; font-size:13px;
+    letter-spacing:.12em; text-transform:uppercase; color:var(--color-accent);
+    margin:0 0 16px;
+  }
+  .headline{ font-size:clamp(26px, 4vw, 40px); font-weight:800; line-height:1.2; letter-spacing:-.01em; }
+  .subheadline{ margin-top:18px; font-size:clamp(16px, 2vw, 18px); color:var(--color-text-muted); }
+  .cta-wrap{ display:flex; justify-content:center; margin-top:36px; }
+  .fine-print{ margin-top:20px; font-size:13px; color:var(--color-text-muted); }
+
+  .site-footer{ background:var(--color-footer-bg); padding:40px 0; }
+  .footer-inner{ display:flex; flex-direction:column; align-items:center; gap:14px; text-align:center; }
+  .legal{ color:var(--color-footer-text); font-size:13px; margin:0; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo logo--dark" href="#" aria-label="Beacon Media">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l1.8 7.2L21 9l-7.2 1.8L12 18l-1.8-7.2L3 9l7.2-1.8z"/></svg>
+      <span>BEACON</span>
+    </a>
+  </div>
+</header>
+
+<main>
+  <section class="status-section">
+    <div class="container status-card">
+      <div class="status-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 6L9 17l-5-5"/>
+        </svg>
+      </div>
+      <p class="eyebrow">[PLACEHOLDER: Application Received]</p>
+      <h1 class="headline">[PLACEHOLDER: You're In — Here's What Happens Next]</h1>
+      <p class="subheadline">[PLACEHOLDER: One or two sentences confirming their application was received and setting expectations for the next step, e.g. checking email for a call link.]</p>
+
+      <div class="cta-wrap">
+        <a class="btn btn-primary" href="#">[PLACEHOLDER: Book Your Call]</a>
+      </div>
+      <p class="fine-print">[PLACEHOLDER: Can't find our email? Check your spam/promotions folder.]</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <a class="logo logo--light" href="#" aria-label="Beacon Media">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l1.8 7.2L21 9l-7.2 1.8L12 18l-1.8-7.2L3 9l7.2-1.8z"/></svg>
+      <span>BEACON</span>
+    </a>
+    <p class="legal">&copy; <span id="year"></span> Beacon Media. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
