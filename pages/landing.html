@@ -150,7 +150,11 @@
     color:var(--color-accent);
     margin:0 0 16px;
   }
-  .eyebrow::before{ content:"• "; }
+  .eyebrow::before{ content:"• "; display:inline-block; animation:eyebrow-pulse 1.6s ease-in-out infinite; }
+  @keyframes eyebrow-pulse{
+    0%, 100%{ opacity:1; }
+    50%{ opacity:.25; }
+  }
   .headline{
     font-size:clamp(28px, 4.4vw, 46px);
     font-weight:800;
