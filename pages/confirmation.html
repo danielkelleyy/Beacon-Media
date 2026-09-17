@@ -30,7 +30,7 @@
 
 <style>
   :root{
-    --color-bg:#0b0c0d;
+    --color-bg:#000000;
     --color-bg-alt:rgba(52,211,153,.12);
     --color-border:#e2e8f0;
     --color-line:rgba(255,255,255,.12);
@@ -59,8 +59,8 @@
   .bm-root{
     background:
       radial-gradient(ellipse 900px 500px at 50% -10%, rgba(52,211,153,.20), transparent 60%),
-      var(--color-bg);
-    color:var(--color-text);
+      var(--color-bg) !important;
+    color:var(--color-text) !important;
     font-family:var(--font-body);
     line-height:1.55;
     -webkit-font-smoothing:antialiased;
@@ -94,8 +94,8 @@
     padding:16px 32px; border-radius:999px; border:none; cursor:pointer;
     text-decoration:none; transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
   }
-  .btn-primary{ background:var(--color-accent); color:var(--color-bg); box-shadow:0 12px 24px -8px rgba(52,211,153,.45); }
-  .btn-primary:hover{ background:var(--color-accent-dark); transform:translateY(-1px); }
+  .btn-primary{ background:#ffffff; color:#0b0c0d; box-shadow:0 12px 24px -8px rgba(255,255,255,.25); }
+  .btn-primary:hover{ background:#e5e5e5; transform:translateY(-1px); }
 
   .status-section{ padding:96px 0 120px; }
   .status-card{ max-width:620px; margin:0 auto; text-align:center; }

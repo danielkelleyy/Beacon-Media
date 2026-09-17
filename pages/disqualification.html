@@ -29,7 +29,7 @@
 
 <style>
   :root{
-    --color-bg:#0b0c0d;
+    --color-bg:#000000;
     --color-bg-alt:rgba(52,211,153,.12);
     --color-border:#e2e8f0;
     --color-line:rgba(255,255,255,.12);
@@ -54,8 +54,8 @@
   .bm-root{
     background:
       radial-gradient(ellipse 900px 500px at 50% -10%, rgba(52,211,153,.20), transparent 60%),
-      var(--color-bg);
-    color:var(--color-text);
+      var(--color-bg) !important;
+    color:var(--color-text) !important;
     font-family:var(--font-body);
     line-height:1.55;
     -webkit-font-smoothing:antialiased;
