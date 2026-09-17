@@ -8,12 +8,10 @@
   markup owns the full page. See /README.md for step-by-step setup.
 
   QUICK-SWAP CONFIG (search for these to update):
-    1) LOGO         — replace the inline SVG+text .logo mark (2 places: header + footer)
-                       with an <img> once the real Beacon logo file is available.
-    2) WISTIA_MEDIA_ID — replace with your real Wistia media hashed id (1 place).
-    3) TYPEFORM_FORM_ID — replace with your real Typeform id (2 places, both CTA buttons).
-    4) TRACKING PIXELS — paste Meta/Google tags in the marked slot below.
-    5) [PLACEHOLDER: ...] — replace every bracketed placeholder with real copy.
+    1) WISTIA_MEDIA_ID — replace with your real Wistia media hashed id (1 place).
+    2) TYPEFORM_FORM_ID — replace with your real Typeform id (2 places, both CTA buttons).
+    3) TRACKING PIXELS — paste Meta/Google tags in the marked slot below.
+    4) [PLACEHOLDER: ...] — replace every bracketed placeholder with real copy.
 -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -93,18 +91,8 @@
   .accent{ color:var(--color-accent); }
 
   /* Logo mark (placeholder until real logo file is supplied) */
-  .logo{ display:inline-flex; align-items:center; gap:8px; text-decoration:none; color:inherit; }
-  .logo svg{ width:16px; height:16px; flex:0 0 auto; }
-  .logo span{
-    font-family:var(--font-heading);
-    font-weight:800;
-    font-size:18px;
-    letter-spacing:.14em;
-  }
-  .logo--dark svg{ fill:var(--color-text); }
-  .logo--dark span{ color:var(--color-text); }
-  .logo--light svg{ fill:#ffffff; }
-  .logo--light span{ color:#ffffff; }
+  .logo{ display:inline-flex; align-items:center; text-decoration:none; }
+  .logo img{ height:24px; width:auto; display:block; }
 
   /* Header */
   .site-header{
@@ -274,9 +262,8 @@
 
 <header class="site-header">
   <div class="container header-inner">
-    <a class="logo logo--light" href="#" aria-label="Beacon Media">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l1.8 7.2L21 9l-7.2 1.8L12 18l-1.8-7.2L3 9l7.2-1.8z"/></svg>
-      <span>BEACON</span>
+    <a class="logo" href="#" aria-label="Beacon Media">
+      <img src="https://raw.githubusercontent.com/danielkelleyy/Beacon-Media/claude/beacon-media-landing-pages-6hlgac/assets/logo.png" alt="Beacon Media">
     </a>
   </div>
 </header>
@@ -369,9 +356,8 @@
 
 <footer class="site-footer">
   <div class="container footer-inner">
-    <a class="logo logo--light" href="#" aria-label="Beacon Media">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l1.8 7.2L21 9l-7.2 1.8L12 18l-1.8-7.2L3 9l7.2-1.8z"/></svg>
-      <span>BEACON</span>
+    <a class="logo" href="#" aria-label="Beacon Media">
+      <img src="https://raw.githubusercontent.com/danielkelleyy/Beacon-Media/claude/beacon-media-landing-pages-6hlgac/assets/logo.png" alt="Beacon Media">
     </a>
     <p class="legal">&copy; <span id="year"></span> Beacon Media. All rights reserved.</p>
   </div>
