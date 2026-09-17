@@ -51,8 +51,12 @@
   }
 
   *,*::before,*::after{ box-sizing:border-box; }
-  body{
-    margin:0;
+  body{ margin:0; overflow-x:hidden; }
+  /* Styled on our own wrapper, not `body` directly — GHL sets its own
+     background on the real <body> (often via an inline style, which always
+     beats a plain `body{...}` rule), so relying on `body` here silently loses
+     that fight once embedded. A class we own can't be preempted that way. */
+  .bm-root{
     background:
       radial-gradient(ellipse 900px 500px at 50% -10%, rgba(52,211,153,.20), transparent 60%),
       var(--color-bg);
@@ -63,7 +67,6 @@
     min-height:100vh;
     display:flex;
     flex-direction:column;
-    overflow-x:hidden;
   }
   main{ flex:1; }
   .container{ width:100%; max-width:var(--container-w); margin:0 auto; padding:0 24px; }
@@ -120,6 +123,7 @@
 </style>
 </head>
 <body>
+<div class="bm-root">
 
 <header class="site-header">
   <div class="container header-inner">
@@ -160,6 +164,7 @@
   </div>
 </footer>
 
+</div>
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
