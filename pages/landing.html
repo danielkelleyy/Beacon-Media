@@ -66,6 +66,12 @@
      that fight once embedded. A class we own can't be preempted that way. */
   .bm-root{
     min-height:100vh;
+    /* Breaks out of whatever width/padding a host page (e.g. a GHL Row/Column)
+       applies to our container, so the background reaches true viewport edges
+       regardless of the surrounding page builder's own layout constraints. */
+    width:100vw;
+    margin-left:calc(50% - 50vw);
+    margin-right:calc(50% - 50vw);
     background:
       radial-gradient(ellipse 900px 500px at 50% -10%, rgba(52,211,153,.20), transparent 60%),
       radial-gradient(ellipse 700px 420px at 90% 65%, rgba(52,211,153,.12), transparent 60%),
@@ -262,7 +268,7 @@
   <section class="hero">
     <div class="container hero-inner">
       <p class="eyebrow">FOR ESTABLISHED HOME SERVICE BUSINESSES</p>
-      <h1 class="headline"><span class="accent">FINALLY</span>: A Growth System That Helps Contractors Win <span class="accent">More Jobs Without Filming Ads Yourself</span>, Chasing Bad Leads, or Running Boring Ads</h1>
+      <h1 class="headline"><span class="accent">FINALLY</span>: A Growth System That Helps Contractors <span class="accent">Win More Jobs Without Filming Ads Yourself</span>, Chasing Bad Leads, or Running Boring Ads</h1>
       <p class="subheadline subheadline--bright">We guarantee <strong>30 qualified project appointments</strong> in 90 days or you <strong>don’t pay</strong>.</p>
 
       <div class="video-wrap">

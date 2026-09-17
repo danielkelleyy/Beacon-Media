@@ -52,6 +52,12 @@
      beats a plain `body{...}` rule), so relying on `body` here silently loses
      that fight once embedded. A class we own can't be preempted that way. */
   .bm-root{
+    /* Breaks out of whatever width/padding a host page (e.g. a GHL Row/Column)
+       applies to our container, so the background reaches true viewport edges
+       regardless of the surrounding page builder's own layout constraints. */
+    width:100vw;
+    margin-left:calc(50% - 50vw);
+    margin-right:calc(50% - 50vw);
     background:
       radial-gradient(ellipse 900px 500px at 50% -10%, rgba(52,211,153,.20), transparent 60%),
       var(--color-bg) !important;
