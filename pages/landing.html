@@ -225,26 +225,18 @@
   .testimonials-section .section-head{ margin-bottom:20px; }
   .testimonial-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
     gap:24px;
     max-width:var(--container-w);
     margin:0 auto;
   }
-  .testimonial-card{
+  .testimonial-video{
     min-width:0;
-    background:#ffffff;
-    border:1px solid var(--color-border);
     border-radius:var(--radius-md);
-    padding:28px;
+    overflow:hidden;
     box-shadow:0 12px 24px -18px rgba(15,23,42,.25);
-    display:flex;
-    flex-direction:column;
-    gap:14px;
+    border:1px solid var(--color-border);
   }
-  .stars{ color:var(--color-star); font-size:16px; letter-spacing:2px; }
-  .testimonial-quote{ font-size:15px; color:var(--color-card-text); flex:1; }
-  .testimonial-name{ font-family:var(--font-heading); font-weight:700; font-size:14px; color:var(--color-card-text); }
-  .testimonial-role{ font-size:13px; color:var(--color-card-text-muted); margin-top:-10px; }
 
   /* CTA repeat section */
   .cta-repeat{ padding:56px 0 88px; }
@@ -331,23 +323,27 @@
         <h2>What Our Clients Have To Say</h2>
       </div>
       <div class="testimonial-grid">
-        <div class="testimonial-card">
-          <div class="stars">★★★★★</div>
-          <p class="testimonial-quote">"[PLACEHOLDER: one-sentence result/quote]"</p>
-          <p class="testimonial-name">[PLACEHOLDER: Client Name]</p>
-          <p class="testimonial-role">[PLACEHOLDER: title / company]</p>
+        <div class="testimonial-video">
+          <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+            <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+              <div class="wistia_embed wistia_async_o1iiv2l2hofloko seo=true videoFoam=true" style="height:100%;position:relative;width:100%">
+                <div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;">
+                  <img src="https://fast.wistia.com/embed/medias/o1iiv2l2hofloko/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="testimonial-card">
-          <div class="stars">★★★★★</div>
-          <p class="testimonial-quote">"[PLACEHOLDER: one-sentence result/quote]"</p>
-          <p class="testimonial-name">[PLACEHOLDER: Client Name]</p>
-          <p class="testimonial-role">[PLACEHOLDER: title / company]</p>
-        </div>
-        <div class="testimonial-card">
-          <div class="stars">★★★★★</div>
-          <p class="testimonial-quote">"[PLACEHOLDER: one-sentence result/quote]"</p>
-          <p class="testimonial-name">[PLACEHOLDER: Client Name]</p>
-          <p class="testimonial-role">[PLACEHOLDER: title / company]</p>
+        <div class="testimonial-video">
+          <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+            <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+              <div class="wistia_embed wistia_async_qht8ouzd2yfzzby seo=true videoFoam=true" style="height:100%;position:relative;width:100%">
+                <div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;">
+                  <img src="https://fast.wistia.com/embed/medias/qht8ouzd2yfzzby/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
