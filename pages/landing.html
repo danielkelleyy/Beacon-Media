@@ -27,8 +27,13 @@
 <!-- ================= TRACKING PIXELS: paste Meta Pixel / Google Ads / GTM here ================= -->
 <!-- ================================================================================================ -->
 
-<!-- Wistia player -->
+<!-- Wistia player (hero video, legacy embed API) -->
 <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+
+<!-- Wistia player (testimonial videos, newer Player API) -->
+<script src="https://fast.wistia.com/player.js" async></script>
+<script src="https://fast.wistia.com/embed/8vt8934fbe.js" async type="module"></script>
+<script src="https://fast.wistia.com/embed/7lyavvzoii.js" async type="module"></script>
 
 <style>
   :root{
@@ -237,6 +242,19 @@
     box-shadow:0 12px 24px -18px rgba(15,23,42,.25);
     border:1px solid var(--color-border);
   }
+  .testimonial-video wistia-player{ display:block; }
+  wistia-player[media-id='8vt8934fbe']:not(:defined){
+    background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/8vt8934fbe/swatch');
+    display:block;
+    filter:blur(5px);
+    padding-top:62.71%;
+  }
+  wistia-player[media-id='7lyavvzoii']:not(:defined){
+    background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/7lyavvzoii/swatch');
+    display:block;
+    filter:blur(5px);
+    padding-top:56.25%;
+  }
 
   /* CTA repeat section */
   .cta-repeat{ padding:56px 0 88px; }
@@ -324,26 +342,10 @@
       </div>
       <div class="testimonial-grid">
         <div class="testimonial-video">
-          <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
-            <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
-              <div class="wistia_embed wistia_async_o1iiv2l2hofloko seo=true videoFoam=true" style="height:100%;position:relative;width:100%">
-                <div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;">
-                  <img src="https://fast.wistia.com/embed/medias/o1iiv2l2hofloko/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" />
-                </div>
-              </div>
-            </div>
-          </div>
+          <wistia-player media-id="8vt8934fbe" aspect="1.5946843853820598"></wistia-player>
         </div>
         <div class="testimonial-video">
-          <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
-            <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
-              <div class="wistia_embed wistia_async_qht8ouzd2yfzzby seo=true videoFoam=true" style="height:100%;position:relative;width:100%">
-                <div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;">
-                  <img src="https://fast.wistia.com/embed/medias/qht8ouzd2yfzzby/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" />
-                </div>
-              </div>
-            </div>
-          </div>
+          <wistia-player media-id="7lyavvzoii" aspect="1.7777777777777777"></wistia-player>
         </div>
       </div>
     </div>
