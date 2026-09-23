@@ -4,7 +4,8 @@
 //   node build-outline.js ./slides-v2 > ../Tamara-Masterclass-Outline-v2.md
 const DATA = process.argv[2] || "./slides";
 const { slides, SECTIONS } = require(DATA);
-const V2 = /v2/.test(DATA);
+const VER = (DATA.match(/v(\d)/) || [, "1"])[1];
+const V2 = VER !== "1";
 
 const VISUAL = {
   hero: "Deep Teal background. Headline left, full-height photo on the right.",
@@ -49,16 +50,17 @@ const p = (...l) => out.push(...l);
 
 if (V2) {
 p(
-  "# Done Waiting Your Turn: Masterclass Deck Outline (v2)",
+  `# Done Waiting Your Turn: Masterclass Deck Outline (v${VER})`,
   "",
   "**Client:** Tamara Lashchyk · Amplify Your V.O.I.C.E. Experience  ",
-  "**Companion file:** `Tamara-Masterclass-v2.pptx` (same content, presenter notes in the notes field)",
+  `**Companion file:** \`Tamara-Masterclass-v${VER}.pptx\` (same content, presenter notes in the notes field)`,
   "",
-  "## What changed from v1",
+  `## What changed from v1${VER === "3" ? " (v2 and v3)" : ""}`,
   "",
   "- **Photos:** slides 1 to 24 (hook, agenda, authority and origin story) keep their photo placeholders. From slide 25 on, every photo is gone except one headshot per client story (Shelly, Nina, Erica), each flagged for written consent.",
   "- **Structure from slide 25 on follows the Sophie Orozco masterclass:** typographic slides (eyebrow, one big line, one supporting line), PART ONE to PART FOUR dividers, an Old Way ✕ list, a five-myth series (What Most Think → The Reality), stat slides with source lines, and for each V.O.I.C.E. pillar a card, a statement, the belief it breaks, ASK YOURSELF, WHAT THIS LOOKS LIKE and the outcome. Each client gets a four-step arc (Where It Started, What Wasn't Working, What Changed, Where She Is Now), followed by WHAT'S INCLUDED cards, YOU MIGHT BE WONDERING objections, YOU HAVE TWO OPTIONS and HOW TO APPLY.",
-  `- **Slide count:** ${slides.length} (v1 was 112).`,
+  `- **Slide count:** ${slides.length} (v1 was 112${VER === "3" ? ", v2 was 131" : ""}).`,
+  ...(VER === "3" ? ["- **v3 trim:** removed the statement slide in each V.O.I.C.E. pillar (5) and the \"What wasn't working\" step in each client arc (3). Their key lines now sit in the presenter notes of the next slide, so \"When is it going to be my turn?\" and \"I want people to take me seriously\" are still said out loud.", "- **Next:** elements from Tamara's old presentation, once Daniel picks from the shortlist."] : []),
   "- **Presenter notes:** Tamara's fuller v1 notes are reused wherever the beat carried over. New beats (myths 2 to 4, ASK YOURSELF, WHAT THIS LOOKS LIKE, the client arcs) have new notes in her voice.",
   "- **New objections:** \"earn the right\" and \"greedy/difficult\" moved into the myth series, so the objection section adds two from the intake instead: \"I've already read the books\" (Q8) and \"Will the inner-work stuff really help my career?\" (Q8).",
   "- **Unchanged:** Step 1 diagnosis (Affluent, EmberFlow reference), strategy not tactics, brand, humanization rules. The new copy was run through the humanization checklist: no em-dashes, no new \"not X, it's Y\" reversals, no flagged vocabulary.",
