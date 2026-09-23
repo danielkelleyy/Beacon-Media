@@ -1,6 +1,10 @@
 // Renders slides.js into the SOP Step 6 slide-by-slide review outline.
-// Usage: node build-outline.js > ../Tamara-Masterclass-Outline-v1.md
-const { slides, SECTIONS } = require("./slides");
+// Usage: node build-outline.js [data module] > outline.md
+//   node build-outline.js ./slides > ../Tamara-Masterclass-Outline-v1.md
+//   node build-outline.js ./slides-v2 > ../Tamara-Masterclass-Outline-v2.md
+const DATA = process.argv[2] || "./slides";
+const { slides, SECTIONS } = require(DATA);
+const V2 = /v2/.test(DATA);
 
 const VISUAL = {
   hero: "Deep Teal background. Headline left, full-height photo on the right.",
@@ -22,12 +26,57 @@ const VISUAL = {
   checklist: "Linen background. Checkmark rows.",
   cta: "Deep Teal background. Numbered application steps, link box, application screenshot on the right.",
   disclaimer: "White background, small type.",
+  divider: "Part divider. Deep Teal, centered eyebrow and title. No photo.",
+  line: "Typographic statement: small eyebrow, big headline, one supporting line. No photo.",
+  myth: "White background. What Most Think card → The Reality card (Deep Teal). No photo.",
+  xlist: "White background. ✕ rows, one per old-way habit. No photo.",
+  bullets: "Linen background. Sage dot rows. No photo.",
+  numbered: "Linen background. Numbered teal circles. No photo.",
+  ask: "Sage Mist background. ASK YOURSELF eyebrow and a centered italic question. No photo.",
+  pillarCard: "Deep Teal. Giant Sage letter, pillar name and definition. No photo.",
+  wonder: "White background. Objection as an italic headline, short answer in a Sage Mist card. No photo.",
+  stat2: "Linen background. Very large stat, one line of context, source line. No photo.",
+  caseStep: "White background. Client name pill, stage eyebrow, headline and body. Headshot on the Where It Started slide only.",
+  included: "Linen background. WHAT'S INCLUDED eyebrow, deliverable name, What It Is and Why It Matters cards, value pill. No photo.",
+  checks: "Checkmark rows (two columns when long). No photo.",
+  options: "White background. Option 1 (neutral) and Option 2 (Deep Teal) cards. No photo.",
+  steps: "Deep Teal. Numbered application steps and a link box. No photo.",
 };
 
 const clean = (t) => String(t).replace(/==/g, "");
 const out = [];
 const p = (...l) => out.push(...l);
 
+if (V2) {
+p(
+  "# Done Waiting Your Turn: Masterclass Deck Outline (v2)",
+  "",
+  "**Client:** Tamara Lashchyk · Amplify Your V.O.I.C.E. Experience  ",
+  "**Companion file:** `Tamara-Masterclass-v2.pptx` (same content, presenter notes in the notes field)",
+  "",
+  "## What changed from v1",
+  "",
+  "- **Photos:** slides 1 to 24 (hook, agenda, authority and origin story) keep their photo placeholders. From slide 25 on, every photo is gone except one headshot per client story (Shelly, Nina, Erica), each flagged for written consent.",
+  "- **Structure from slide 25 on follows the Sophie Orozco masterclass:** typographic slides (eyebrow, one big line, one supporting line), PART ONE to PART FOUR dividers, an Old Way ✕ list, a five-myth series (What Most Think → The Reality), stat slides with source lines, and for each V.O.I.C.E. pillar a card, a statement, the belief it breaks, ASK YOURSELF, WHAT THIS LOOKS LIKE and the outcome. Each client gets a four-step arc (Where It Started, What Wasn't Working, What Changed, Where She Is Now), followed by WHAT'S INCLUDED cards, YOU MIGHT BE WONDERING objections, YOU HAVE TWO OPTIONS and HOW TO APPLY.",
+  `- **Slide count:** ${slides.length} (v1 was 112).`,
+  "- **Presenter notes:** Tamara's fuller v1 notes are reused wherever the beat carried over. New beats (myths 2 to 4, ASK YOURSELF, WHAT THIS LOOKS LIKE, the client arcs) have new notes in her voice.",
+  "- **New objections:** \"earn the right\" and \"greedy/difficult\" moved into the myth series, so the objection section adds two from the intake instead: \"I've already read the books\" (Q8) and \"Will the inner-work stuff really help my career?\" (Q8).",
+  "- **Unchanged:** Step 1 diagnosis (Affluent, EmberFlow reference), strategy not tactics, brand, humanization rules. The new copy was run through the humanization checklist: no em-dashes, no new \"not X, it's Y\" reversals, no flagged vocabulary.",
+  "- **Removed an inference:** v1 notes said Erica was early in her career. The intake doesn't say that, so it's gone.",
+  "",
+  "## Gap flags (still open, marked [PLACEHOLDER])",
+  "",
+  "- Next cohort start date, price and seat count. The founding cohort started Sept 15, 2026.",
+  "- Per-deliverable values, the bonus and the total stack value (intake Q30 and Q31 are blank).",
+  "- A source citation for \"60%+ of women have never negotiated their salary.\"",
+  "- Client headshots and written consent for Shelly, Nina and Erica. Swap the paraphrased identity-shift lines for their own words or video if possible.",
+  "- Additional testimonials, the application URL, logo usage rights (slide 11) and legal review of the disclaimer (slide 9).",
+  "- Fonts: install Cormorant Garamond and DM Sans on the presenting machine.",
+  "",
+  "---",
+  ""
+);
+} else {
 p(
   "# Done Waiting Your Turn: Masterclass Deck Outline (v1)",
   "",
@@ -73,6 +122,7 @@ p(
   "---",
   ""
 );
+}
 
 let cur = 0;
 slides.forEach((s, i) => {
@@ -82,20 +132,25 @@ slides.forEach((s, i) => {
     p(`## Section ${cur}: ${SECTIONS[cur]} (${n} slides)`, "");
   }
   p(`### SLIDE ${i + 1} · ${SECTIONS[s.sec].toUpperCase()}${s.build ? `   {BUILD ${s.build}}` : ""}`, "");
-  p(`**Headline:** ${clean(s.h)}  `);
+  if (s.h) p(`**Headline:** ${clean(s.h)}  `);
   if (s.sub) p(`**Subhead:** ${clean(s.sub)}  `);
   if (s.stat) p(`**Stat callout:** ${s.stat}  `);
   if (s.body) {
     if (Array.isArray(s.body)) { p("**Body:**  "); s.body.forEach((b) => p(`- ${clean(b)}`)); }
     else p(`**Body:** ${clean(s.body)}  `);
   }
-  if (s.left) p(`**Left column (${s.left.label}):** ${s.left.text}  `, `**Right column (${s.right.label}):** ${s.right.text}  `);
-  if (s.items) p(`**Items:** ${s.items.map((x) => (Array.isArray(x) ? x.join(" = ") : x)).join(" · ")}  `);
+  if (s.eyebrow) p(`**Eyebrow:** ${s.eyebrow}  `);
+  if (s.think) p(`**${s.thinkLabel || "What most think"}:** ${s.think}  `, `**${s.realityLabel || "The reality"}:** ${s.reality}  `);
+  if (s.who) p(`**Client:** ${s.who}  `);
+  if (s.source) p(`**Source line:** ${s.source}  `);
+  if (s.left && s.left.title) p(`**${s.left.label}:** ${s.left.title}. ${s.left.text}  `, `**${s.right.label}:** ${s.right.title}. ${s.right.text}  `);
+  else if (s.left) p(`**Left column (${s.left.label}):** ${s.left.text}  `, `**Right column (${s.right.label}):** ${s.right.text}  `);
+  if (s.items) { p("**Items:**  "); s.items.forEach((x) => p(`- ${Array.isArray(x) ? x.join(" = ") : clean(x)}`)); }
   if (s.what) p(`**What it is:** ${s.what}  `, `**Why it matters:** ${s.why}  `, `**Value:** ${s.value}  `);
   if (s.total) p(`**Total:** ${s.total}  `);
   if (s.link) p(`**Link:** ${s.link}  `);
   p(`**Photo placeholder:** ${s.photo || "None (typographic slide)"}  `);
-  const hl = (s.h.match(/==(.+?)==/) || [])[1];
+  const hl = ((s.h || "").match(/==(.+?)==/) || [])[1];
   p(`**Visual direction:** ${VISUAL[s.layout]}${hl ? ` Highlight bar on "${hl}".` : ""}${s.visual ? " " + s.visual : ""}  `);
   p(`**Presenter notes:** ${s.notes}`, "");
 });
