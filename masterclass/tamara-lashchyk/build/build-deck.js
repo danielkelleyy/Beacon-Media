@@ -346,10 +346,15 @@ const L = {
   bullets(sl, s) {
     bg(sl, C.linen);
     eyebrow(sl, s.eyebrow, 0.9, 0.8, false);
+    let y0 = 1.7, step = 1.2;
+    if (s.h) {
+      head(sl, s.h, 0.9, 1.25, W - 1.8, 1.4, 40, false, { valign: "top", color: C.teal });
+      y0 = 3.05; step = 0.95;
+    }
     s.items.forEach((t, i) => {
-      const y = 1.7 + i * 1.2;
+      const y = y0 + i * step;
       sl.addShape(pres.shapes.OVAL, { x: 0.95, y: y + 0.22, w: 0.26, h: 0.26, fill: { color: C.sage }, line: { color: C.sage } });
-      tx(sl, t, 1.6, y - 0.05, 10.8, 0.8, { fontFace: HF, fontSize: 30, bold: true, color: C.ink, valign: "middle" });
+      tx(sl, t, 1.6, y - 0.05, 10.8, 0.8, { fontFace: HF, fontSize: s.h ? 26 : 30, bold: true, color: C.ink, valign: "middle" });
     });
   },
   numbered(sl, s) {
@@ -455,6 +460,54 @@ const L = {
     });
     sl.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 0.9, y: 5.8, w: W - 1.8, h: 0.8, rectRadius: 0.12, fill: { color: C.mist }, line: { color: C.mist } });
     tx(sl, s.link, 1.2, 5.8, W - 2.4, 0.8, { fontSize: 18, bold: true, color: C.teal, valign: "middle" });
+    return true;
+  },
+  // ── v3 layouts ──
+  icp(sl, s) {
+    const dark = s.tone === "dark";
+    bg(sl, dark ? C.teal : C.linen);
+    tx(sl, s.eyebrow.toUpperCase(), 1, 1.3, W - 2, 0.45, { fontSize: 15, bold: true, color: C.sage, charSpacing: 5, align: "center", valign: "middle" });
+    tx(sl, "“", 1, 1.8, W - 2, 1.2, { fontFace: HF, fontSize: 120, bold: true, color: C.sage, align: "center", valign: "top" });
+    tx(sl, s.h.replace(/^"|"$/g, ""), 1.2, 3.0, W - 2.4, 2.8, {
+      fontFace: HF, fontSize: fit(s.h, 56), italic: true, bold: true, dark, color: dark ? C.white : C.teal, align: "center", valign: "top", lsm: 1.0,
+    });
+    return dark;
+  },
+  poll(sl, s) {
+    bg(sl, C.mist);
+    eyebrow(sl, s.eyebrow, 0.9, 0.8, false);
+    head(sl, s.h, 0.9, 1.25, W - 1.8, 1.2, 48, false, { valign: "top", color: C.teal });
+    s.items.forEach((t, i) => {
+      const y = 2.75 + i * 1.05;
+      sl.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 0.9, y, w: W - 1.8, h: 0.85, rectRadius: 0.12, fill: { color: C.white }, line: { color: C.white } });
+      circle(sl, 1.1, y + 0.15, 0.55, C.teal, String(i + 1), C.white, 20);
+      tx(sl, t, 1.95, y, W - 3.2, 0.85, { fontFace: HF, fontSize: 26, bold: true, color: C.ink, valign: "middle" });
+    });
+    tx(sl, s.sub, 0.9, 6.1, W - 1.8, 0.5, { fontSize: 18, bold: true, color: C.teal, valign: "middle" });
+  },
+  contrast(sl, s) {
+    bg(sl, C.white);
+    eyebrow(sl, s.eyebrow, 0.9, 0.7, false);
+    const cw = (W - 1.8 - 0.4) / 2, x2 = 0.9 + cw + 0.4;
+    tx(sl, s.leftLabel.toUpperCase(), 0.9 + 0.3, 1.25, cw, 0.4, { fontSize: 13, bold: true, color: C.muted, charSpacing: 3 });
+    tx(sl, s.rightLabel.toUpperCase(), x2 + 0.3, 1.25, cw, 0.4, { fontSize: 13, bold: true, color: C.sage, charSpacing: 3 });
+    s.rows.forEach(([l, r], i) => {
+      const y = 1.8 + i * 1.6;
+      sl.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 0.9, y, w: cw, h: 1.4, rectRadius: 0.12, fill: { color: C.old }, line: { color: C.old } });
+      sl.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: x2, y, w: cw, h: 1.4, rectRadius: 0.12, fill: { color: C.teal }, line: { color: C.teal } });
+      tx(sl, l, 1.2, y, cw - 0.6, 1.4, { fontFace: HF, fontSize: 22, bold: true, color: C.ink, valign: "middle" });
+      tx(sl, r, x2 + 0.3, y, cw - 0.6, 1.4, { fontFace: HF, fontSize: 22, bold: true, color: C.white, valign: "middle", dark: true });
+    });
+  },
+  ifThen(sl, s) {
+    bg(sl, C.teal);
+    eyebrow(sl, s.eyebrow, 0.9, 0.8, true);
+    s.rows.forEach(([a, b], i) => {
+      const y = 1.5 + i * 1.0;
+      tx(sl, a, 0.5, y, 6.3, 0.8, { fontFace: HF, fontSize: 26, bold: true, color: C.sageLight, valign: "middle", align: "right", dark: true });
+      tx(sl, "→", 6.85, y, 0.7, 0.8, { fontSize: 28, bold: true, color: C.sage, align: "center", valign: "middle" });
+      tx(sl, b, 7.6, y, 5.3, 0.8, { fontFace: HF, fontSize: 26, bold: true, color: C.white, valign: "middle", dark: true });
+    });
     return true;
   },
 };

@@ -3,7 +3,7 @@
 //   node build-outline.js ./slides > ../Tamara-Masterclass-Outline-v1.md
 //   node build-outline.js ./slides-v2 > ../Tamara-Masterclass-Outline-v2.md
 const DATA = process.argv[2] || "./slides";
-const { slides, SECTIONS } = require(DATA);
+const { slides, SECTIONS, meta } = require(DATA);
 const VER = (DATA.match(/v(\d)/) || [, "1"])[1];
 const V2 = VER !== "1";
 
@@ -42,13 +42,19 @@ const VISUAL = {
   checks: "Checkmark rows (two columns when long). No photo.",
   options: "White background. Option 1 (neutral) and Option 2 (Deep Teal) cards. No photo.",
   steps: "Deep Teal. Numbered application steps and a link box. No photo.",
+  icp: "Typographic first-person quote, centered, with a large open-quote mark. Alternates Linen and Deep Teal. No photo.",
+  poll: "Sage Mist background. Poll question and three numbered answer cards. No photo.",
+  contrast: "White background. Two columns of paired cards: plays small (neutral) vs. knows her value (Deep Teal). No photo.",
+  ifThen: "Deep Teal. Five \"If you feel… → you…\" rows. Designer: reveal one row per click. No photo.",
 };
 
 const clean = (t) => String(t).replace(/==/g, "");
 const out = [];
 const p = (...l) => out.push(...l);
 
-if (V2) {
+if (meta) {
+p(...meta.header);
+} else if (V2) {
 p(
   `# Done Waiting Your Turn: Masterclass Deck Outline (v${VER})`,
   "",
@@ -147,6 +153,8 @@ slides.forEach((s, i) => {
   if (s.source) p(`**Source line:** ${s.source}  `);
   if (s.left && s.left.title) p(`**${s.left.label}:** ${s.left.title}. ${s.left.text}  `, `**${s.right.label}:** ${s.right.title}. ${s.right.text}  `);
   else if (s.left) p(`**Left column (${s.left.label}):** ${s.left.text}  `, `**Right column (${s.right.label}):** ${s.right.text}  `);
+  if (s.rows) { p("**Rows:**  "); s.rows.forEach(([a, b]) => p(`- ${a} → ${b}`)); }
+  if (s.leftLabel) p(`**Columns:** ${s.leftLabel} | ${s.rightLabel}  `);
   if (s.items) { p("**Items:**  "); s.items.forEach((x) => p(`- ${Array.isArray(x) ? x.join(" = ") : clean(x)}`)); }
   if (s.what) p(`**What it is:** ${s.what}  `, `**Why it matters:** ${s.why}  `, `**Value:** ${s.value}  `);
   if (s.total) p(`**Total:** ${s.total}  `);
