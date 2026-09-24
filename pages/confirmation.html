@@ -88,8 +88,8 @@
   }
   .header-inner{ display:flex; align-items:center; justify-content:center; padding:18px 24px; }
 
-  .status-section{ padding:96px 0 120px; }
-  .status-card{ max-width:620px; margin:0 auto; text-align:center; }
+  .status-section{ padding:40px 0 120px; }
+  .status-card{ max-width:840px; margin:0 auto; text-align:center; }
   .status-icon{
     width:64px; height:64px; margin:0 auto 28px;
     border-radius:50%;
@@ -107,6 +107,7 @@
     0%, 100%{ opacity:1; }
     50%{ opacity:.25; }
   }
+  .accent{ color:var(--color-accent); }
   .headline{ font-size:clamp(26px, 4vw, 40px); font-weight:800; line-height:1.2; letter-spacing:-.01em; }
   .subheadline{ margin-top:18px; font-size:clamp(16px, 2vw, 18px); font-style:italic; color:var(--color-text-muted); }
   .fine-print{ margin-top:20px; font-size:13px; color:var(--color-text-muted); }
@@ -146,7 +147,7 @@
         </svg>
       </div>
       <p class="eyebrow">Application Received</p>
-      <h1 class="headline">Last Step: Please check your email and tap "Yes" on invite to confirm you'll attend. Unconfirmed calls may be released to another business.</h1>
+      <h1 class="headline"><span class="accent">Last Step</span>: Please check your email and tap "<span class="accent">Yes</span>" on invite to confirm you'll attend. Unconfirmed calls may be released to another business.</h1>
 
       <div class="video-wrap">
         <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
