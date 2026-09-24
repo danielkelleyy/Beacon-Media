@@ -9,8 +9,8 @@
   theme disabled. See /README.md for step-by-step setup.
 
   QUICK-SWAP CONFIG:
-    1) NEXT-STEP LINK — replace the href="#" on .btn-primary below with your
-       real booking/calendar link (e.g. a GHL calendar embed URL).
+    1) WISTIA_MEDIA_ID — replace with the real Wistia media hashed id for
+       the confirmation-page video (2 places, inside the same embed block).
     2) TRACKING PIXELS — paste your Lead/CompleteRegistration conversion
        event in the marked slot below.
     3) [PLACEHOLDER: ...] — replace every bracketed placeholder with real copy.
@@ -22,6 +22,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
 
 <!-- ========= TRACKING: fire your Lead / CompleteRegistration conversion event here ========= -->
 <!-- ========================================================================================== -->
@@ -87,15 +88,6 @@
   }
   .header-inner{ display:flex; align-items:center; justify-content:center; padding:18px 24px; }
 
-  .btn{
-    display:inline-flex; align-items:center; justify-content:center;
-    font-family:var(--font-heading); font-weight:700; font-size:16px;
-    padding:16px 32px; border-radius:999px; border:none; cursor:pointer;
-    text-decoration:none; transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
-  }
-  .btn-primary{ background:#ffffff; color:#0b0c0d; box-shadow:0 12px 24px -8px rgba(255,255,255,.25); }
-  .btn-primary:hover{ background:#e5e5e5; transform:translateY(-1px); }
-
   .status-section{ padding:96px 0 120px; }
   .status-card{ max-width:620px; margin:0 auto; text-align:center; }
   .status-icon{
@@ -117,8 +109,17 @@
   }
   .headline{ font-size:clamp(26px, 4vw, 40px); font-weight:800; line-height:1.2; letter-spacing:-.01em; }
   .subheadline{ margin-top:18px; font-size:clamp(16px, 2vw, 18px); font-style:italic; color:var(--color-text-muted); }
-  .cta-wrap{ display:flex; justify-content:center; margin-top:36px; }
   .fine-print{ margin-top:20px; font-size:13px; color:var(--color-text-muted); }
+
+  /* Video */
+  .video-wrap{
+    margin:32px auto 0;
+    max-width:560px;
+    border-radius:var(--radius-lg);
+    overflow:hidden;
+    box-shadow:var(--shadow-md);
+    border:1px solid var(--color-border);
+  }
 
   .site-footer{ background:var(--color-footer-bg); border-top:1px solid var(--color-line); padding:40px 0; }
   .footer-inner{ display:flex; flex-direction:column; align-items:center; gap:14px; text-align:center; }
@@ -146,11 +147,19 @@
       </div>
       <p class="eyebrow">Application Received</p>
       <h1 class="headline">Last Step: Please check your email and tap "Yes" on invite to confirm you'll attend. Unconfirmed calls may be released to another business.</h1>
-      <p class="subheadline">[PLACEHOLDER: One or two sentences confirming their application was received and setting expectations for the next step, e.g. checking email for a call link.]</p>
 
-      <div class="cta-wrap">
-        <a class="btn btn-primary" href="#">[PLACEHOLDER: Book Your Call]</a>
+      <div class="video-wrap">
+        <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+          <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+            <div class="wistia_embed wistia_async_WISTIA_MEDIA_ID seo=true videoFoam=true" style="height:100%;position:relative;width:100%">
+              <div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;">
+                <img src="https://fast.wistia.com/embed/medias/WISTIA_MEDIA_ID/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+
       <p class="fine-print">[PLACEHOLDER: Can't find our email? Check your spam/promotions folder.]</p>
     </div>
   </section>
