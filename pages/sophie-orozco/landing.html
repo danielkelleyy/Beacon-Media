@@ -12,7 +12,9 @@
        Or replace the whole <form class="reg-form"> with your GHL form / webinar embed.
     2) PRIVACY_URL / TERMS_URL / DISCLAIMER_URL — footer links (1 place each).
     3) TRACKING PIXELS — paste Meta/Google tags in the marked slot below.
-    4) [PHOTO: ...] boxes — replace each .ph element with an <img src="FULL_IMAGE_URL" alt="...">.
+    4) PHOTOS — images/sophie-hero.jpg and images/sophie-family.jpg: upload both to the GHL Media Library
+       and replace each src="images/..." with the full URL (GHL can't load relative paths).
+       Remaining [PHOTO/VIDEO/LOGO: ...] boxes: replace each .ph element with an <img src="FULL_IMAGE_URL" alt="...">.
        Images must be hosted (GHL Media Library or a CDN); local paths won't resolve.
     5) Written releases for CJ and Bill must be on file before this page runs.
 -->
@@ -136,7 +138,8 @@
   .reg-form .btn{ flex:0 0 auto; }
   .consent{ margin-top:12px; font-size:12px; color:#7b7f84; max-width:560px; }
   .hero-photo{ position:relative; }
-  .hero-photo .ph{ aspect-ratio:4/5; border-radius:200px 200px var(--radius) var(--radius); }
+  .hero-photo .ph, .hero-img{ aspect-ratio:4/5; border-radius:200px 200px var(--radius) var(--radius); }
+  .hero-img{ width:100%; height:auto; object-fit:cover; object-position:50% 30%; box-shadow:0 30px 60px -34px rgba(21,71,52,.6); }
 
   /* ================= REACH BAR ================= */
   .reach{ background:var(--green); color:var(--peach); padding:26px 0 30px; text-align:center; }
@@ -194,11 +197,12 @@
   .host h2{ font-family:var(--font-title); font-size:clamp(38px, 5vw, 52px); }
   .host-sub{ margin-top:10px; font-size:19px; }
   .host-stage{ position:relative; max-width:900px; margin:44px auto 0; min-height:520px; }
-  .host-stage .ph{ width:340px; max-width:70%; aspect-ratio:3/4; margin:0 auto; border-bottom:none; border-radius:var(--radius) var(--radius) 0 0; }
+  .host-photo{ position:relative; width:360px; max-width:72%; margin:0 auto; }
+  .host-img{ width:100%; height:auto; aspect-ratio:3/4; object-fit:cover; border-radius:var(--radius) var(--radius) 0 0; }
   .host-q{ position:absolute; width:250px; text-align:left; font-size:18px; }
   .host-q .who{ display:block; margin-top:14px; font-family:var(--font-heading); font-weight:700; font-size:14px; color:var(--pink); }
-  .hq1{ left:0; top:30px; }
-  .hq2{ right:0; top:250px; }
+  .hq1{ left:0; top:130px; }
+  .hq2{ right:0; top:260px; }
 
   /* ================= FINAL CTA ================= */
   .final{
@@ -227,7 +231,10 @@
     .host-stage{ min-height:0; }
     .host-q{ position:static; width:auto; max-width:420px; margin:0 auto 26px; text-align:center; }
     .host-stage{ display:flex; flex-direction:column; }
-    .host-stage .ph{ order:3; }
+    .host-photo{ order:3; }
+    .host-photo .arrow{ display:none; }
+    .host-photo .tag-l{ left:12px !important; top:12px !important; }
+    .host-photo .tag-r{ right:12px !important; left:auto !important; top:12px !important; }
   }
   @media (max-width:560px){
     .so-root{ font-size:16px; }
@@ -288,7 +295,8 @@
         </div>
 
         <div class="hero-photo">
-          <div class="ph">[PHOTO: Sophie, warm and direct, cutout or soft background, 4:5]</div>
+          <!-- GHL: replace src with the Media Library URL for sophie-hero.jpg -->
+          <img class="hero-img" src="images/sophie-hero.jpg" alt="Sophie Orozco" width="800" height="1200">
           <svg class="arrow" style="left:-48px;top:18%;" viewBox="0 0 46 34" fill="none" aria-hidden="true"><path d="M2 30C10 12 24 6 40 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M33 3l8 5-7 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <span class="tag tag-name" style="left:-82px;top:calc(18% + 34px);">Sophie</span>
           <span class="tag" style="left:50%;bottom:16px;transform:translateX(-50%);">Founder, Relationship Miracle Method</span>
@@ -391,22 +399,29 @@
   <section class="host">
     <div class="container">
       <h2>Meet Your Host</h2>
-      <p class="host-sub">The woman who almost lost her own marriage, and found the way back.</p>
+      <p class="host-sub">The woman who almost lost her own marriage, and found the way back. Married to Chris, mom of four.</p>
       <div class="host-stats">
         <span><b>107K</b> on Instagram</span><span><b>50K</b> on Facebook</span><span><b>25K</b> on TikTok</span><span>Host of <b>Love Life Lessons</b></span>
       </div>
 
       <div class="host-stage">
         <div class="host-q hq1">
-          <span class="hl-block">"The only person I could change was me. So I stopped chasing, and started with me."</span>
-          <span class="who">Sophie</span>
-        </div>
-
-        <div class="ph">[PHOTO: Sophie, or Sophie &amp; Chris together, cutout, 3:4]</div>
-
-        <div class="host-q hq2">
           <span class="hl-block">"She always showed up really warm, and it just melted the coldness in me."</span>
           <span class="who">Chris, Sophie's husband</span>
+        </div>
+
+        <div class="host-photo">
+          <!-- GHL: replace src with the Media Library URL for sophie-family.jpg -->
+          <img class="host-img" src="images/sophie-family.jpg" alt="Sophie and Chris Orozco with their four children" width="900" height="1200">
+          <svg class="arrow" viewBox="0 0 46 34" fill="none" aria-hidden="true" style="left:-46px;top:44px;transform:scaleX(-1) rotate(-10deg);"><path d="M2 30C10 12 24 6 40 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M33 3l8 5-7 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="tag tag-l" style="left:-100px;top:24px;">Chris</span>
+          <svg class="arrow" viewBox="0 0 46 34" fill="none" aria-hidden="true" style="right:-46px;top:44px;"><path d="M2 30C10 12 24 6 40 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M33 3l8 5-7 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="tag tag-r" style="right:-110px;top:24px;">Sophie</span>
+        </div>
+
+        <div class="host-q hq2">
+          <span class="hl-block">"The only person I could change was me. So I stopped chasing, and started with me."</span>
+          <span class="who">Sophie</span>
         </div>
       </div>
     </div>
