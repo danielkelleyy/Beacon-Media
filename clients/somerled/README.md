@@ -31,6 +31,6 @@ Landing page  ──"Free Design Strategy"──▶  Typeform popup (one form, p
 
 **Video placeholders.** Every video is a styled `.video-ph` box. To go live, replace the box with the Wistia snippet in the HTML comment above the main video on each page. Load `player.js` once per page, and give each video its own `embed/<ID>.js` script line.
 
-**Featured In.** The logos load from `assets/featured/` under these file names: `business-insider.png`, `people.png`, `architectural-digest.png`, `home-accents-today.png`, `bravo.png`, `the-spruce.png`, `the-business-journals.png`, `pr-newswire.png`. Transparent PNGs work best. They're shown in one muted tone so they read as a set. Until a file exists, the outlet's name appears as text in its place.
+**Featured In.** Logos live in `assets/featured/`: `business-insider.png`, `people.png`, `architectural-digest.png`, `home-accents-today.png`, `bravo.png`. They're transparent PNGs, pre-tinted Somerled teal. Each `<li>` sets `--h` so the logos look the same visual size. `the-spruce.png` hasn't been supplied yet, so The Spruce shows as a text wordmark until it's added.
 
 **Fonts and colors.** Brand colors were sampled from Somerled's current site and live in each file's `:root` block. Outfit and Figtree are Google Font stand-ins for Somerled's brand typefaces, set via `--font-heading` and `--font-body`.

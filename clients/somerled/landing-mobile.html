@@ -174,15 +174,13 @@
   .featured-list{
     list-style:none; margin:0; padding:0;
     display:flex; flex-wrap:wrap; justify-content:center; align-items:center;
-    gap:18px 36px;
+    gap:14px 28px;
   }
-  /* Outlet logos, shown in one muted tone so mismatched brand colors read as a set.
-     Until a logo file exists, the alt text renders as a styled wordmark instead. */
+  /* Outlet logos: pre-tinted Somerled teal (assets/featured/*.png). Each <li>
+     sets --h so wide wordmarks and stacked marks look the same visual size.
+     If a file is missing, its alt text renders as a styled wordmark instead. */
   .featured-list li{ display:flex; align-items:center; }
-  .featured-list img{
-    height:22px; width:auto; max-width:170px; object-fit:contain;
-    filter:grayscale(1) brightness(.45); opacity:.8;
-  }
+  .featured-list img{ height:calc(var(--h, 30px) * .8); width:auto; max-width:180px; object-fit:contain; opacity:.85; }
   .logo-fallback{
     font-family:var(--font-heading); font-weight:700; font-size:15px;
     color:var(--color-teal); opacity:.75; white-space:nowrap;
@@ -220,7 +218,7 @@
   .btn{ width:100%; padding:18px 20px; }
   .video-wrap{ border-width:2px; border-radius:16px; }
   .wave{ height:28px; }
-  .featured-list{ gap:12px 22px; }
+  .featured-list{ gap:14px 24px; }
 </style>
 </head>
 <body>
@@ -272,14 +270,12 @@
     <div class="container">
       <p class="section-kicker">As Featured In</p>
       <ul class="featured-list">
-        <li><img src="https://raw.githubusercontent.com/danielkelleyy/Beacon-Media/claude/peaceful-brown-t2mdo4/clients/somerled/assets/featured/business-insider.png" alt="Business Insider" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'logo-fallback',textContent:this.alt}))"></li>
-        <li><img src="https://raw.githubusercontent.com/danielkelleyy/Beacon-Media/claude/peaceful-brown-t2mdo4/clients/somerled/assets/featured/people.png" alt="People" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'logo-fallback',textContent:this.alt}))"></li>
-        <li><img src="https://raw.githubusercontent.com/danielkelleyy/Beacon-Media/claude/peaceful-brown-t2mdo4/clients/somerled/assets/featured/architectural-digest.png" alt="Architectural Digest" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'logo-fallback',textContent:this.alt}))"></li>
-        <li><img src="https://raw.githubusercontent.com/danielkelleyy/Beacon-Media/claude/peaceful-brown-t2mdo4/clients/somerled/assets/featured/home-accents-today.png" alt="Home Accents Today" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'logo-fallback',textContent:this.alt}))"></li>
-        <li><img src="https://raw.githubusercontent.com/danielkelleyy/Beacon-Media/claude/peaceful-brown-t2mdo4/clients/somerled/assets/featured/bravo.png" alt="Bravo" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'logo-fallback',textContent:this.alt}))"></li>
-        <li><img src="https://raw.githubusercontent.com/danielkelleyy/Beacon-Media/claude/peaceful-brown-t2mdo4/clients/somerled/assets/featured/the-spruce.png" alt="The Spruce" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'logo-fallback',textContent:this.alt}))"></li>
-        <li><img src="https://raw.githubusercontent.com/danielkelleyy/Beacon-Media/claude/peaceful-brown-t2mdo4/clients/somerled/assets/featured/the-business-journals.png" alt="The Business Journals" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'logo-fallback',textContent:this.alt}))"></li>
-        <li><img src="https://raw.githubusercontent.com/danielkelleyy/Beacon-Media/claude/peaceful-brown-t2mdo4/clients/somerled/assets/featured/pr-newswire.png" alt="PR Newswire" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'logo-fallback',textContent:this.alt}))"></li>
+        <li style="--h:30px"><img src="https://raw.githubusercontent.com/danielkelleyy/Beacon-Media/claude/peaceful-brown-t2mdo4/clients/somerled/assets/featured/business-insider.png" alt="Business Insider" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'logo-fallback',textContent:this.alt}))"></li>
+        <li style="--h:30px"><img src="https://raw.githubusercontent.com/danielkelleyy/Beacon-Media/claude/peaceful-brown-t2mdo4/clients/somerled/assets/featured/people.png" alt="People" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'logo-fallback',textContent:this.alt}))"></li>
+        <li style="--h:42px"><img src="https://raw.githubusercontent.com/danielkelleyy/Beacon-Media/claude/peaceful-brown-t2mdo4/clients/somerled/assets/featured/architectural-digest.png" alt="Architectural Digest" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'logo-fallback',textContent:this.alt}))"></li>
+        <li style="--h:34px"><img src="https://raw.githubusercontent.com/danielkelleyy/Beacon-Media/claude/peaceful-brown-t2mdo4/clients/somerled/assets/featured/home-accents-today.png" alt="Home Accents Today" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'logo-fallback',textContent:this.alt}))"></li>
+        <li style="--h:26px"><img src="https://raw.githubusercontent.com/danielkelleyy/Beacon-Media/claude/peaceful-brown-t2mdo4/clients/somerled/assets/featured/bravo.png" alt="Bravo" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'logo-fallback',textContent:this.alt}))"></li>
+        <li style="--h:30px"><img src="https://raw.githubusercontent.com/danielkelleyy/Beacon-Media/claude/peaceful-brown-t2mdo4/clients/somerled/assets/featured/the-spruce.png" alt="The Spruce" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'logo-fallback',textContent:this.alt}))"></li>
       </ul>
     </div>
   </section>
