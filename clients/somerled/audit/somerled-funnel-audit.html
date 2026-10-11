@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Somerled Funnel Audit</title>
+<!-- Print source for "Somerled Funnel Audit.pdf". Each <section class="page"> is one
+     landscape Letter page. Render with Chromium page.pdf({ landscape:true,
+     format:'Letter', printBackground:true }). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal:#194b59; --teal-deep:#123a45; --coral:#cf7a6f; --coral-dark:#b8645a; --coral-soft:#f4a99d;
+    --aqua:#dff6f8; --cream:#fff6ed; --blush:#efcac0; --gold:#d6b05c;
+    --ink:#1d1d1f; --muted:#4f5b60; --line:#d9e3e5;
+    --red:#c8553d; --red-bg:#fbe3dd; --amber:#b7862b; --amber-bg:#fbf0d6; --green:#2f8a5f; --green-bg:#dcf1e6;
+    --font-heading:'Outfit', sans-serif; --font-body:'Figtree', sans-serif;
+  }
+  @page{ size:11in 8.5in; margin:0; }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; background:#888; }
+  body{ font-family:var(--font-body); color:var(--ink); font-size:12.5pt; line-height:1.45; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  h1,h2,h3,h4{ font-family:var(--font-heading); margin:0; line-height:1.12; }
+  p{ margin:0; }
+  img{ display:block; max-width:100%; }
+  .page > img{ align-self:flex-start; }
+
+  .page{
+    width:11in; height:8.5in; position:relative; overflow:hidden;
+    background:var(--cream); page-break-after:always; break-after:page;
+    padding:0.55in 0.6in 0.6in;
+    display:flex; flex-direction:column;
+  }
+  .page:last-child{ page-break-after:auto; break-after:auto; }
+
+  /* Running header / footer */
+  .p-head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:0.22in; }
+  .kicker{ font-family:var(--font-heading); font-weight:700; font-size:9.5pt; letter-spacing:.16em; text-transform:uppercase; color:var(--coral-dark); }
+  .p-title{ font-size:27pt; font-weight:800; color:var(--ink); margin-top:4px; letter-spacing:-.01em; }
+  .p-sub{ color:var(--muted); font-size:12.5pt; margin-top:6px; max-width:8.6in; }
+  .p-foot{
+    position:absolute; left:0.6in; right:0.6in; bottom:0.28in;
+    display:flex; justify-content:space-between; font-size:8.5pt; color:#8a979b; letter-spacing:.04em;
+  }
+  .p-foot b{ color:var(--teal); font-weight:700; }
+
+  .chip{ display:inline-flex; align-items:center; gap:6px; font-family:var(--font-heading); font-weight:700; font-size:8.5pt; letter-spacing:.1em; text-transform:uppercase; padding:4px 10px; border-radius:999px; }
+  .chip::before{ content:""; width:7px; height:7px; border-radius:50%; background:currentColor; }
+  .chip.red{ color:var(--red); background:var(--red-bg); }
+  .chip.amber{ color:var(--amber); background:var(--amber-bg); }
+  .chip.green{ color:var(--green); background:var(--green-bg); }
+
+  .shot{ border-radius:10px; overflow:hidden; border:1.5px solid var(--line); background:#fff; box-shadow:0 10px 24px -14px rgba(18,58,69,.45); }
+  .shot img{ width:100%; }
+  .cap{ font-family:var(--font-heading); font-weight:700; font-size:9pt; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin:0 0 6px; }
+  .cap.before{ color:var(--red); }
+  .cap.after{ color:var(--green); }
+
+  ul.clean{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:9px; }
+  ul.clean li{ position:relative; padding-left:20px; }
+  ul.clean li::before{ content:""; position:absolute; left:2px; top:.55em; width:8px; height:8px; border-radius:50%; background:var(--coral); }
+  ul.x li::before{ content:"✕"; width:auto; height:auto; background:none; color:var(--red); font-weight:800; font-size:10pt; top:.05em; left:0; }
+  ul.check li::before{ content:"✓"; width:auto; height:auto; background:none; color:var(--green); font-weight:800; font-size:11pt; top:0; left:0; }
+
+  .stat{ background:var(--teal); color:#fff; border-radius:14px; padding:16px 18px; }
+  .stat .n{ font-family:var(--font-heading); font-weight:800; font-size:24pt; color:var(--coral-soft); line-height:1; }
+  .stat p{ font-size:10.5pt; margin-top:6px; color:rgba(255,255,255,.85); }
+
+  .callout{ background:var(--aqua); border-left:4px solid var(--teal); border-radius:8px; padding:12px 16px; font-size:11pt; }
+  .callout b{ color:var(--teal); }
+
+  /* ---------- Cover ---------- */
+  .cover{ background:var(--teal); color:#fff; padding:0.7in 0.75in; }
+  .cover .logo{ height:30px; width:auto; }
+  .cover-grid{ flex:1; display:grid; grid-template-columns:1.05fr 1fr; gap:0.5in; align-items:center; }
+  .cover h1{ font-size:52pt; font-weight:800; line-height:1.0; letter-spacing:-.02em; color:#fff; }
+  .cover h1 span{ color:var(--coral-soft); }
+  .cover .tag{ margin-top:18px; font-size:15pt; color:rgba(255,255,255,.86); max-width:4.6in; }
+  .cover .eyebrow{ display:inline-block; font-family:var(--font-heading); font-weight:700; font-size:10pt; letter-spacing:.16em; text-transform:uppercase; color:var(--teal); background:var(--aqua); padding:7px 14px; border-radius:999px; margin-bottom:22px; }
+  .cover .meta{ margin-top:34px; display:flex; gap:28px; font-size:10.5pt; color:rgba(255,255,255,.75); }
+  .cover .meta b{ display:block; white-space:nowrap; font-family:var(--font-heading); color:#fff; font-size:12pt; margin-top:2px; }
+  .browser{ background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 30px 60px -20px rgba(0,0,0,.55); transform:rotate(-2deg); }
+  .browser .bar{ height:22px; background:#e9eef0; display:flex; align-items:center; gap:6px; padding:0 10px; }
+  .browser .bar i{ width:8px; height:8px; border-radius:50%; background:#c9d2d5; display:block; }
+  .cover-wave{ position:absolute; left:0; right:0; bottom:0; height:0.55in; }
+
+  /* ---------- Exec summary ---------- */
+  .exec{ display:grid; grid-template-columns:1fr 1.15fr; gap:0.45in; flex:1; align-items:center; padding-bottom:0.3in; }
+  .exec .lead{ font-size:15pt; line-height:1.5; color:var(--ink); }
+  .exec .lead b{ color:var(--teal); }
+  .fix{ display:grid; grid-template-columns:44px 1fr; gap:14px; background:#fff; border:1.5px solid var(--line); border-radius:14px; padding:20px 20px; }
+  .fix .num{ width:44px; height:44px; border-radius:50%; background:var(--coral); color:#fff; font-family:var(--font-heading); font-weight:800; font-size:18pt; display:flex; align-items:center; justify-content:center; }
+  .fix h3{ font-size:14.5pt; font-weight:700; }
+  .fix p{ font-size:11.5pt; color:var(--muted); margin-top:4px; }
+
+  /* ---------- Scorecard ---------- */
+  .funnel{ display:grid; grid-template-columns:repeat(6, 1fr); gap:14px; margin-top:10px; flex:1; max-height:4.3in; }
+  .stage{ background:#fff; border:1.5px solid var(--line); border-radius:14px; padding:16px 14px 18px; position:relative; display:flex; flex-direction:column; gap:10px; }
+  .stage .step{ font-family:var(--font-heading); font-weight:700; font-size:8.5pt; letter-spacing:.14em; color:#8a979b; text-transform:uppercase; }
+  .stage h3{ font-size:15pt; font-weight:800; }
+  .stage p{ font-size:11pt; color:var(--muted); }
+  .stage:not(:last-child)::after{ content:"→"; position:absolute; right:-13px; top:44%; color:var(--teal); font-weight:800; font-size:14pt; z-index:2; }
+  .stage.red{ border-top:5px solid var(--red); }
+  .stage.amber{ border-top:5px solid var(--amber); }
+  .legend{ display:flex; gap:12px; align-items:center; font-size:10pt; color:var(--muted); }
+
+  /* generic two-col */
+  .cols{ display:grid; gap:0.35in; flex:1; min-height:0; }
+  .stack{ display:flex; flex-direction:column; gap:14px; min-height:0; }
+
+  /* rebuild markers */
+  .marked{ position:relative; }
+  .mk{ position:absolute; width:26px; height:26px; border-radius:50%; background:var(--coral); color:#fff; font-family:var(--font-heading); font-weight:800; font-size:11pt; display:flex; align-items:center; justify-content:center; box-shadow:0 0 0 3px #fff; }
+  ol.marks{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; counter-reset:m; }
+  ol.marks li{ counter-increment:m; position:relative; padding-left:36px; font-size:11pt; }
+  ol.marks li::before{ content:counter(m); position:absolute; left:0; top:-1px; width:24px; height:24px; border-radius:50%; background:var(--coral); color:#fff; font-family:var(--font-heading); font-weight:800; font-size:10.5pt; display:flex; align-items:center; justify-content:center; }
+  ol.marks b{ font-family:var(--font-heading); color:var(--ink); }
+
+  /* flow */
+  .flow{ display:flex; flex-direction:column; gap:8px; }
+  .node{ background:#fff; border:1.5px solid var(--line); border-radius:12px; padding:10px 14px; font-family:var(--font-heading); font-weight:700; font-size:11.5pt; display:flex; align-items:center; justify-content:space-between; gap:10px; }
+  .node small{ font-family:var(--font-body); font-weight:500; font-size:9.5pt; color:var(--muted); }
+  .node.hero{ background:var(--teal); color:#fff; border-color:var(--teal); }
+  .node.hero small{ color:rgba(255,255,255,.8); }
+  .arrow{ text-align:center; color:var(--teal); font-weight:800; line-height:1; }
+  .split{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .node.good{ border-left:5px solid var(--green); }
+  .node.bad{ border-left:5px solid var(--muted); }
+
+  /* breakouts list */
+  .vids{ display:grid; grid-template-columns:1fr; gap:6px; }
+  .vid{ display:flex; gap:10px; align-items:center; background:#fff; border:1.5px solid var(--line); border-radius:10px; padding:7px 12px; font-size:10.5pt; }
+  .vid .pl{ flex:0 0 22px; height:22px; border-radius:50%; background:var(--coral); position:relative; }
+  .vid .pl::after{ content:""; position:absolute; left:8px; top:6px; border-left:8px solid #fff; border-top:5px solid transparent; border-bottom:5px solid transparent; }
+
+  /* bars */
+  .bars{ display:flex; flex-direction:column; gap:10px; }
+  .bar-row{ display:grid; grid-template-columns:1.35in 1fr 0.3in; align-items:center; gap:10px; font-size:11pt; }
+  .bar-track{ height:18px; background:#eef2f3; border-radius:6px; overflow:hidden; }
+  .bar-fill{ height:100%; background:var(--teal); border-radius:6px; }
+  .bar-row.zero .bar-fill{ background:none; }
+  .bar-row.zero{ color:var(--red); font-weight:700; }
+  .bar-row .v{ font-family:var(--font-heading); font-weight:800; text-align:right; }
+
+  .card{ background:#fff; border:1.5px solid var(--line); border-radius:14px; padding:16px 18px; }
+  .card h3{ font-size:14pt; font-weight:800; margin-bottom:8px; }
+  .card.teal{ background:var(--teal); border-color:var(--teal); color:#fff; }
+  .card.teal h3{ color:#fff; }
+  .card.teal ul.clean li::before{ background:var(--coral-soft); }
+
+  /* rollout */
+  .roll{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; flex:1; max-height:5.3in; margin-top:6px; }
+  .phase{ background:#fff; border:1.5px solid var(--line); border-radius:16px; padding:20px 20px 22px; display:flex; flex-direction:column; gap:12px; }
+  .phase .days{ font-family:var(--font-heading); font-weight:800; font-size:30pt; color:var(--teal); line-height:1; }
+  .phase .days span{ font-size:12pt; color:var(--coral-dark); letter-spacing:.12em; text-transform:uppercase; margin-left:6px; }
+  .phase h3{ font-size:15pt; font-weight:800; }
+  .phase .goal{ margin-top:auto; font-size:11.5pt; background:var(--aqua); border-radius:10px; padding:10px 12px; color:var(--teal); }
+
+  /* closing */
+  .close{ background:var(--teal); color:#fff; }
+  .close .p-title{ color:#fff; }
+  .close .kicker{ color:var(--coral-soft); }
+  .close .p-foot{ color:rgba(255,255,255,.55); }
+  .close .p-foot b{ color:#fff; }
+</style>
+</head>
+<body>
+
+<!-- 1. COVER -->
+<section class="page cover">
+  <img class="logo" src="../assets/logo-white.png" alt="Somerled">
+  <div class="cover-grid">
+    <div>
+      <span class="eyebrow">Marketing &amp; Funnel Review</span>
+      <h1>Somerled<br><span>Funnel Audit</span></h1>
+      <p class="tag">Where your funnel is leaking qualified STR owners, and exactly how to fix it.</p>
+      <div class="meta">
+        <div>Prepared for<b>Somerled Designs</b></div>
+        <div>Prepared by<b>Daniel Kelley · Beacon Media</b></div>
+        <div>Date<b>October 2026</b></div>
+      </div>
+    </div>
+    <div class="browser">
+      <div class="bar"><i></i><i></i><i></i></div>
+      <img src="img/new-landing-hero.jpg" alt="Proposed Somerled landing page">
+    </div>
+  </div>
+  <svg class="cover-wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path fill="#123a45" d="M0 30c120 0 120-30 240-30s120 30 240 30 120-30 240-30 120 30 240 30 120-30 240-30 120 30 240 30v30H0z"/></svg>
+</section>
+
+<!-- 2. EXECUTIVE SUMMARY -->
+<section class="page">
+  <div class="p-head"><div><p class="kicker">Executive Summary</p><h2 class="p-title">The Short Version</h2></div></div>
+  <div class="exec">
+    <div class="stack" style="gap:20px">
+      <p class="lead">Somerled already has what most firms in this space are missing: <b>real results, real press, and 1,000+ profitable STRs designed</b>.</p>
+      <p class="lead">The opportunity isn't the product. It's the <b>path</b>. Today, paid traffic lands on a page built like a website, prospects fill out two forms to book, and then the funnel goes quiet until the call.</p>
+      <p class="lead">Each of those steps lets qualified owners slip away. The good news: <b>every one of them is fixable</b>, and the new pages are already built.</p>
+    </div>
+    <div class="stack">
+      <p class="kicker" style="margin-bottom:2px">The Top 3 Fixes</p>
+      <div class="fix"><div class="num">1</div><div><h3>Rebuild the landing page around a VSL</h3><p>A focused, benefit-led page with a 5-minute video and one action: "Free Design Strategy." Fewer words, more impact, built for mobile first.</p></div></div>
+      <div class="fix"><div class="num">2</div><div><h3>One form, not two</h3><p>Replace the website form + Calendly combo with a single Typeform that saves partial responses, so every half-finished application can still be followed up.</p></div></div>
+      <div class="fix"><div class="num">3</div><div><h3>Pre-sell before the call</h3><p>A confirmation page with objection-handling videos, two value-packed emails a day, and retargeting ads, so prospects show up already convinced.</p></div></div>
+    </div>
+  </div>
+  <div class="p-foot"><span><b>Somerled Funnel Audit</b> · Beacon Media</span><span>2</span></div>
+</section>
+
+<!-- 3. SCORECARD -->
+<section class="page">
+  <div class="p-head">
+    <div><p class="kicker">Funnel Scorecard</p><h2 class="p-title">Where Leads Are Leaking</h2><p class="p-sub">Every stage between first seeing an ad and showing up to the call, graded.</p></div>
+  </div>
+  <div class="funnel">
+    <div class="stage amber"><span class="step">Stage 1</span><h3>Ads</h3><span class="chip amber">Needs work</span><p>Good volume, but light on testimonials and static reels for retargeting. Ads aren't offer-led, so the landing page has to do the selling.</p></div>
+    <div class="stage red"><span class="step">Stage 2</span><h3>Landing Page</h3><span class="chip red">Critical</span><p>Built like a website, not a conversion page. No callout, no benefit-led headline, no video, and the mobile layout breaks.</p></div>
+    <div class="stage red"><span class="step">Stage 3</span><h3>Application</h3><span class="chip red">Critical</span><p>Two forms (website form + Calendly) before booking. Nothing is captured from people who start but don't finish.</p></div>
+    <div class="stage red"><span class="step">Stage 4</span><h3>Confirmation</h3><span class="chip red">Critical</span><p>A bare "You are scheduled!" screen at the exact moment prospects start asking "why should I show up?"</p></div>
+    <div class="stage red"><span class="step">Stage 5</span><h3>Pre-Call</h3><span class="chip red">Critical</span><p>One automated text and two logistics emails. Nothing that builds authority between booking and the call.</p></div>
+    <div class="stage amber"><span class="step">Stage 6</span><h3>Content</h3><span class="chip amber">Needs work</span><p>Strong Instagram short-form, but no long-form content (YouTube, masterclass) to nurture buyers.</p></div>
+  </div>
+  <div style="margin-top:auto; display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end;">
+    <div class="callout"><b>What's working:</b> Somerled's website is beautifully done, the Instagram content is strong, and the proof is real: press features, client results and a 1,000+ property portfolio. The fixes below put that proof in front of prospects at the moments that matter.</div>
+    <div class="legend"><span class="chip red">Critical</span><span class="chip amber">Needs work</span></div>
+  </div>
+  <div class="p-foot"><span><b>Somerled Funnel Audit</b> · Beacon Media</span><span>3</span></div>
+</section>
+
+<!-- 4. LANDING PAGE — NOW -->
+<section class="page">
+  <div class="p-head"><div><p class="kicker">Stage 2 · Landing Page</p><h2 class="p-title">What's Happening Now</h2></div><span class="chip red">Critical</span></div>
+  <div class="cols" style="grid-template-columns:3.3in 3.1in 1fr; align-items:center;">
+    <div class="stack">
+      <p class="cap before">Current page · desktop</p>
+      <div class="shot"><img src="img/old-landing-hero.jpg" alt="Current Somerled landing page hero"></div>
+      <div class="stat"><div class="n">40–50%</div><p>of visitors scroll past the hero. <b style="color:#fff">100%</b> see it. The eyebrow, headline and video carry the page.</p></div>
+    </div>
+    <div class="stack">
+      <p class="cap before">Current page · mobile</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+        <div class="shot"><img src="img/old-mobile-button.jpg" alt="Squished consultation button on mobile"></div>
+        <div class="shot"><img src="img/old-mobile-overflow.jpg" alt="Headline running off the screen on mobile"></div>
+      </div>
+      <p style="font-size:9.5pt; color:var(--muted)">Left: the main button is squished and cut off. Right: the headline runs off the edge of the screen.</p>
+    </div>
+    <div class="stack" style="gap:12px">
+      <h3 style="font-size:14pt">Why it's costing booked calls</h3>
+      <ul class="clean x" style="font-size:10.8pt">
+        <li><b>It's built like a website.</b> Lots of sections and copy compete for attention, and it's easier to scroll than to act.</li>
+        <li><b>No callout at the top</b> telling visitors who this is for.</li>
+        <li><b>The headline doesn't lead with the #1 benefit.</b> People see 4,000–10,000 brand messages a day; the headline has to stop them.</li>
+        <li><b>No video.</b> The ads aren't offer-led, so the page needs to make the offer.</li>
+        <li><b>Mobile breaks:</b> type is oversized, text runs off the screen, and the button is hard to see.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="p-foot"><span><b>Somerled Funnel Audit</b> · Beacon Media</span><span>4</span></div>
+</section>
+
+<!-- 5. LANDING PAGE — REBUILD -->
+<section class="page">
+  <div class="p-head"><div><p class="kicker">Stage 2 · Landing Page</p><h2 class="p-title">The Rebuild</h2></div><span class="chip green">Built &amp; ready</span></div>
+  <div class="cols" style="grid-template-columns:4.6in 1.55in 1fr;">
+    <div class="stack">
+      <p class="cap after">New page · desktop</p>
+      <div class="shot marked">
+        <img src="img/new-landing-hero.jpg" alt="Rebuilt landing page hero">
+        <span class="mk" style="left:71%; top:3.5%">1</span>
+        <span class="mk" style="left:81%; top:15.5%">2</span>
+        <span class="mk" style="left:77%; top:38%">3</span>
+        <span class="mk" style="left:86%; top:56%">4</span>
+      </div>
+      <div class="callout"><b>Why less is more:</b> when the information lives in the video, only serious owners take the time to watch. Tire-kickers filter themselves out before they ever book.</div>
+    </div>
+    <div class="stack">
+      <p class="cap after">Mobile</p>
+      <div class="shot" style="height:5.6in"><img src="img/new-landing-mobile.jpg" alt="Rebuilt landing page on mobile" style="object-fit:cover; object-position:top; height:100%"></div>
+    </div>
+    <div class="stack">
+      <ol class="marks">
+        <li><b>Eyebrow:</b> "For STR Owners Ready to Improve Property Performance" calls out exactly who it's for.</li>
+        <li><b>Benefit headline:</b> leads with the result: +30% revenue and +40% occupancy.</li>
+        <li><b>Subheadline</b> knocks out the big objections: wasted money, guesswork, managing it yourself.</li>
+        <li><b>5-minute VSL:</b> the offer in the first 90 seconds, then credibility, with 3 calls to action inside the video. Tracked in Wistia.</li>
+        <li><b>One action:</b> "Free Design Strategy" opens the application.</li>
+        <li><b>Proof below:</b> Featured In logos (Business Insider, People, AD, Bravo and more) and a wall of video testimonials, then the button again.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="p-foot"><span><b>Somerled Funnel Audit</b> · Beacon Media</span><span>5</span></div>
+</section>
+
+<!-- 6. APPLICATION -->
+<section class="page">
+  <div class="p-head"><div><p class="kicker">Stage 3 · Application</p><h2 class="p-title">Two Forms → One</h2></div><span class="chip red">Critical</span></div>
+  <div class="cols" style="grid-template-columns:1.25fr 1fr; align-items:center;">
+    <div class="stack">
+      <p class="cap before">Today: two forms to book one call</p>
+      <div style="display:grid; grid-template-columns:0.82fr 1fr; gap:12px; align-items:start;">
+        <div><p style="font-size:9.5pt; font-weight:700; margin-bottom:5px">Form 1 · Website form</p><div class="shot"><img src="img/old-application.jpg" alt="Website application form"></div></div>
+        <div class="stack" style="gap:10px">
+          <div><p style="font-size:9.5pt; font-weight:700; margin-bottom:5px">Form 2 · Calendly: pick a time…</p><div class="shot"><img src="img/old-calendly-date.jpg" alt="Calendly date picker"></div></div>
+          <div><p style="font-size:9.5pt; font-weight:700; margin-bottom:5px">…then fill in more details</p><div class="shot"><img src="img/old-calendly-details.jpg" alt="Calendly details form"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="stack">
+      <p class="cap after">Proposed: one place, one form</p>
+      <div class="flow">
+        <div class="node">Landing page <small>"Free Design Strategy"</small></div>
+        <div class="arrow">↓</div>
+        <div class="node hero">One embedded Typeform <small>partial answers saved</small></div>
+        <div class="arrow">↓</div>
+        <div class="split">
+          <div class="node good">Qualified <small>book + confirmation page</small></div>
+          <div class="node bad">Not a fit <small>polite redirect</small></div>
+        </div>
+      </div>
+      <ul class="clean check" style="font-size:10.8pt; margin-top:6px">
+        <li><b>Less friction:</b> one form in one place instead of a form, then a calendar, then another form.</li>
+        <li><b>Partial capture:</b> most people start a form and leave. Typeform saves what they entered so they can be followed up by email.</li>
+        <li><b>Built-in qualifying:</b> answers route people to the right page automatically.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="p-foot"><span><b>Somerled Funnel Audit</b> · Beacon Media</span><span>6</span></div>
+</section>
+
+<!-- 7. CONFIRMATION -->
+<section class="page">
+  <div class="p-head"><div><p class="kicker">Stage 4 · Confirmation Page</p><h2 class="p-title">From "You're Scheduled" to Pre-Sold</h2></div><span class="chip green">Built &amp; ready</span></div>
+  <div class="cols" style="grid-template-columns:3.3in 2.3in 1fr;">
+    <div class="stack">
+      <p class="cap before">Today</p>
+      <div class="shot"><img src="img/old-confirmation.jpg" alt="Current confirmation screen"></div>
+      <div class="callout" style="margin-top:4px"><b>Why this page matters most:</b> once someone books, they shift from <b>scanner mode</b> (just looking) to <b>justification mode</b>: "Why should I actually show up to this call?" This page should answer that before they ask.</div>
+    </div>
+    <div class="stack">
+      <p class="cap after">New page</p>
+      <div class="shot" style="height:5.55in"><img src="img/new-confirmation-full.jpg" alt="Rebuilt confirmation page" style="object-fit:cover; object-position:top; height:100%"></div>
+    </div>
+    <div class="stack" style="gap:12px">
+      <ul class="clean check" style="font-size:10.8pt">
+        <li><b>"IMPORTANT: confirm your call"</b>, so fewer no-shows from unconfirmed invites.</li>
+        <li><b>Confirmation video:</b> an FAQ, urgency, or "about our reviews" video, tracked in Wistia.</li>
+        <li><b>5 breakout videos</b> that handle objections before the call:</li>
+      </ul>
+      <div class="vids">
+        <div class="vid"><span class="pl"></span>What it costs &amp; the ROI you can expect</div>
+        <div class="vid"><span class="pl"></span>Virtual Design vs. Full Project Management</div>
+        <div class="vid"><span class="pl"></span>How long a project takes</div>
+        <div class="vid"><span class="pl"></span>How we use market data to pick upgrades</div>
+        <div class="vid"><span class="pl"></span>What happens on your strategy call</div>
+      </div>
+    </div>
+  </div>
+  <div class="p-foot"><span><b>Somerled Funnel Audit</b> · Beacon Media</span><span>7</span></div>
+</section>
+
+<!-- 8. PRE-CALL -->
+<section class="page">
+  <div class="p-head"><div><p class="kicker">Stage 5 · Pre-Call Nurture</p><h2 class="p-title">Build Authority Before the Call</h2></div><span class="chip red">Critical</span></div>
+  <div class="cols" style="grid-template-columns:1fr 1.1fr;">
+    <div class="stack">
+      <p class="cap before">What a prospect receives today</p>
+      <div class="shot"><img src="img/old-email-2.jpg" alt="Booking follow-up email"></div>
+      <div class="shot" style="height:1.75in"><img src="img/old-email-1.jpg" alt="Calendar invite email" style="object-fit:cover; object-position:top; height:100%"></div>
+      <p style="font-size:10pt; color:var(--muted)">One automated text, a calendar invite, and a friendly logistics email. Helpful, but none of it builds the case for working with Somerled.</p>
+    </div>
+    <div class="stack" style="gap:14px">
+      <p class="cap after">The plan: surround them until the call</p>
+      <div class="card">
+        <h3>2 value-packed emails a day</h3>
+        <p style="font-size:10.8pt; color:var(--muted); margin-bottom:8px">Every day between booking and the call. Real value, not fluff, and each email quietly handles a common objection:</p>
+        <ul class="clean" style="font-size:10.8pt">
+          <li>"It's too big an investment."</li>
+          <li>"I need to think about it."</li>
+          <li>"I don't see the value of design yet."</li>
+        </ul>
+      </div>
+      <div class="card teal">
+        <h3>Booked-call retargeting ads</h3>
+        <ul class="clean" style="font-size:10.8pt">
+          <li><b>10+ ad sets</b>, one ad in each</li>
+          <li><b>Frequency 15+</b></li>
+          <li><b>Audience:</b> only people who've booked a call</li>
+          <li>Every time they open their phone, they see Bri and the Somerled team.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="p-foot"><span><b>Somerled Funnel Audit</b> · Beacon Media</span><span>8</span></div>
+</section>
+
+<!-- 9. ADS & CONTENT -->
+<section class="page">
+  <div class="p-head"><div><p class="kicker">Stages 1 &amp; 6 · Ads and Content</p><h2 class="p-title">Diversify Creative, Add Long-Form</h2></div><span class="chip amber">Needs work</span></div>
+  <div class="cols" style="grid-template-columns:1fr 1.15fr; align-items:center;">
+    <div class="stack" style="gap:16px">
+      <div class="card">
+        <h3>Current ad library mix</h3>
+        <div class="bars">
+          <div class="bar-row"><span>Talking head</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="v">7</span></div>
+          <div class="bar-row"><span>Static</span><div class="bar-track"><div class="bar-fill" style="width:85.7%"></div></div><span class="v">6</span></div>
+          <div class="bar-row"><span>Carousel</span><div class="bar-track"><div class="bar-fill" style="width:57.1%"></div></div><span class="v">4</span></div>
+          <div class="bar-row"><span>Green screen</span><div class="bar-track"><div class="bar-fill" style="width:14.3%"></div></div><span class="v">1</span></div>
+          <div class="bar-row"><span>Testimonial</span><div class="bar-track"><div class="bar-fill" style="width:14.3%"></div></div><span class="v">1</span></div>
+          <div class="bar-row zero"><span>Static reels</span><div class="bar-track"><div class="bar-fill" style="width:0"></div></div><span class="v">0</span></div>
+        </div>
+      </div>
+      <div class="stat"><div class="n">~5 hours</div><p>of content exposure is what people typically need before making a buying decision. Long-form content gets them there faster.</p></div>
+    </div>
+    <div class="stack" style="gap:14px">
+      <div class="card">
+        <h3>Ads</h3>
+        <ul class="clean" style="font-size:10.8pt">
+          <li><b>Add static reels:</b> currently none in the library.</li>
+          <li><b>More testimonial ads</b> for retargeting. Only one exists today, and real client results are Somerled's strongest asset.</li>
+          <li><b>Test top Instagram posts as ads.</b> The organic short-form content is strong; put budget behind the winners.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Content</h3>
+        <ul class="clean" style="font-size:10.8pt">
+          <li><b>Start long-form YouTube.</b> Property breakdowns, market research and before/afters nurture prospects while they decide.</li>
+          <li><b>Build a masterclass</b> that walks owners through strategic STR design, and use it in ads and emails.</li>
+          <li><b>Start regular marketing emails.</b> Today, people who show interest receive no value-packed follow-up.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="p-foot"><span><b>Somerled Funnel Audit</b> · Beacon Media</span><span>9</span></div>
+</section>
+
+<!-- 10. ROLLOUT -->
+<section class="page">
+  <div class="p-head"><div><p class="kicker">Roadmap</p><h2 class="p-title">The 30 / 60 / 90-Day Rollout</h2><p class="p-sub">Biggest leaks first. Each phase builds on the one before it.</p></div></div>
+  <div class="roll">
+    <div class="phase">
+      <div class="days">30<span>Days</span></div>
+      <h3>Fix the front door</h3>
+      <ul class="clean" style="font-size:12pt">
+        <li>Launch the new landing page</li>
+        <li>Record and publish the 5-minute VSL (tracked in Wistia)</li>
+        <li>Switch to one Typeform with partial-response capture</li>
+        <li>Launch the qualified and not-a-fit pages</li>
+      </ul>
+      <p class="goal"><b>Goal:</b> more applications from the same traffic.</p>
+    </div>
+    <div class="phase">
+      <div class="days">60<span>Days</span></div>
+      <h3>Pre-sell every booking</h3>
+      <ul class="clean" style="font-size:12pt">
+        <li>Record the confirmation video and 5 breakout videos</li>
+        <li>Launch the 2-a-day pre-call email sequence</li>
+        <li>Launch booked-call retargeting (10+ ad sets)</li>
+        <li>Follow up partial applications by email</li>
+      </ul>
+      <p class="goal"><b>Goal:</b> higher show rates and warmer calls.</p>
+    </div>
+    <div class="phase">
+      <div class="days">90<span>Days</span></div>
+      <h3>Feed the top of the funnel</h3>
+      <ul class="clean" style="font-size:12pt">
+        <li>Diversify ad creative: static reels and testimonials</li>
+        <li>Test top Instagram posts as ads</li>
+        <li>Launch a long-form YouTube channel</li>
+        <li>Build the masterclass</li>
+      </ul>
+      <p class="goal"><b>Goal:</b> more qualified owners entering the funnel.</p>
+    </div>
+  </div>
+  <div class="p-foot"><span><b>Somerled Funnel Audit</b> · Beacon Media</span><span>10</span></div>
+</section>
+
+<!-- 11. NEXT STEP -->
+<section class="page close">
+  <img src="../assets/logo-white.png" alt="Somerled" style="height:26px; width:auto;">
+  <div style="flex:1; display:grid; grid-template-columns:1.1fr 1fr; gap:0.5in; align-items:center;">
+    <div>
+      <p class="kicker">Next Step</p>
+      <h2 class="p-title" style="font-size:40pt; margin-top:8px">Let's Walk Through It Together</h2>
+      <p style="font-size:14pt; color:rgba(255,255,255,.85); margin-top:16px; max-width:5in">The landing, confirmation and not-a-fit pages are already built. On a 30-minute call we'll walk through the new funnel, answer questions and map out launch.</p>
+      <div style="margin-top:26px; display:inline-block; background:var(--coral); color:#fff; font-family:var(--font-heading); font-weight:700; font-size:14pt; padding:14px 26px; border-radius:12px;">Reply to Daniel to book your walkthrough →</div>
+    </div>
+    <div class="stack" style="gap:12px">
+      <div class="card" style="background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.18); color:#fff">
+        <h3 style="color:#fff">What's already done</h3>
+        <ul class="clean check" style="font-size:11pt">
+          <li style="color:#fff">New landing page: desktop + mobile</li>
+          <li style="color:#fff">Confirmation page with 5 breakout video slots</li>
+          <li style="color:#fff">Not-a-fit page</li>
+          <li style="color:#fff">Full funnel plan and 90-day roadmap</li>
+        </ul>
+      </div>
+      <div class="card" style="background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.18); color:#fff">
+        <h3 style="color:#fff">What we'll need from you</h3>
+        <ul class="clean" style="font-size:11pt">
+          <li>VSL, confirmation and breakout video recordings</li>
+          <li>Client testimonial videos</li>
+          <li>Typeform qualifying questions sign-off</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="p-foot"><span><b>Somerled Funnel Audit</b> · Beacon Media</span><span>11</span></div>
+</section>
+
+</body>
+</html>
