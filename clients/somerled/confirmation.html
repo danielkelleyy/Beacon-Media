@@ -101,7 +101,7 @@
   }
   .subheadline{
     max-width:680px; margin:16px auto 0;
-    font-size:clamp(16px, 2vw, 19px); font-style:italic; color:var(--color-on-teal-muted);
+    font-size:clamp(16px, 2vw, 19px); font-style:italic; font-weight:700; color:var(--color-on-teal);
   }
 
   /* Video placeholder */
@@ -142,25 +142,20 @@
   }
   .section-head h2{ font-size:clamp(26px, 3.6vw, 38px); font-weight:800; line-height:1.15; }
   .section-head p{ margin:12px 0 0; color:var(--color-ink-muted); }
-  .breakout-grid{
-    display:flex; flex-wrap:wrap; justify-content:center; gap:24px;
-  }
-  .b-card{
-    flex:1 1 300px; max-width:350px; min-width:0;
-    background:var(--color-cream);
-    border:2px solid var(--color-teal);
-    border-radius:var(--radius-md);
-    overflow:hidden;
-  }
-  .b-card .video-ph{ gap:6px; }
-  .b-card .video-ph .play{ box-shadow:0 0 0 7px rgba(207,122,111,.25); }
-  .b-body{ padding:18px 20px 22px; }
+  /* Breakouts are stacked: each video gets its own heading so viewers know what it covers */
+  .breakout-list{ max-width:820px; margin:0 auto; display:flex; flex-direction:column; gap:56px; }
+  .b-item{ min-width:0; }
+  .b-head{ margin:0 0 16px; }
   .b-num{
-    font-family:var(--font-heading); font-weight:700; font-size:12px;
+    font-family:var(--font-heading); font-weight:700; font-size:13px;
     letter-spacing:.12em; text-transform:uppercase; color:var(--color-coral-dark); margin:0 0 6px;
   }
-  .b-body h3{ font-size:20px; font-weight:700; line-height:1.25; color:var(--color-ink); }
-  .b-body p.b-desc{ margin:8px 0 0; font-size:15px; color:var(--color-ink-muted); }
+  .b-head h3{ font-size:clamp(22px, 3vw, 30px); font-weight:800; line-height:1.2; color:var(--color-ink); }
+  .b-desc{ margin:8px 0 0; font-size:17px; color:var(--color-ink-muted); }
+  .b-video{
+    border-radius:var(--radius-lg); overflow:hidden;
+    border:2px solid var(--color-teal); box-shadow:var(--shadow-md);
+  }
 
   .site-footer{ background:var(--color-teal-deep); padding:36px 0; }
   .footer-inner{ display:flex; flex-direction:column; align-items:center; gap:12px; text-align:center; }
@@ -173,7 +168,8 @@
     .headline{ font-size:25px; }
     .video-wrap{ border-width:2px; border-radius:16px; }
     .wave{ height:28px; }
-    .b-card{ max-width:none; }
+    .breakout-list{ gap:40px; }
+    .b-video{ border-radius:16px; }
   }
 </style>
 </head>
@@ -195,7 +191,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="#194b59" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
       </div>
       <p class="eyebrow">You're Booked</p>
-      <h1 class="headline"><span class="hl">Last Step:</span> Check your email and tap "<span class="hl">Yes</span>" on the invite to confirm your Design Strategy call.</h1>
+      <h1 class="headline"><span class="hl">IMPORTANT:</span> Check your email and tap "<span class="hl">Yes</span>" on the invite to confirm your Design Strategy call.</h1>
       <p class="subheadline">Then watch the short video below. It explains exactly what happens on your call and how to get the most out of it.</p>
 
       <div class="video-wrap">
@@ -226,69 +222,84 @@
         <p>Quick answers to the questions STR owners ask us most.</p>
       </div>
 
-      <div class="breakout-grid">
+      <div class="breakout-list">
         <!-- Breakout 1 — WISTIA_BREAKOUT_1 -->
-        <article class="b-card">
-          <div class="video-ph" role="img" aria-label="Video placeholder">
-            <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l15 8-15 8z"/></svg></span>
-            <span class="video-ph__sub">Breakout Video 1 Placeholder</span>
-          </div>
-          <div class="b-body">
+        <article class="b-item">
+          <div class="b-head">
             <p class="b-num">Video 1</p>
             <h3>What It Costs &amp; The ROI You Can Expect</h3>
             <p class="b-desc">How we size your design investment to your market, and why it pays for itself.</p>
           </div>
+          <div class="b-video">
+            <div class="video-ph" role="img" aria-label="Video placeholder">
+              <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l15 8-15 8z"/></svg></span>
+              <span class="video-ph__label">Breakout Video 1 Placeholder</span>
+              <span class="video-ph__sub">Wistia embed goes here</span>
+            </div>
+          </div>
         </article>
 
         <!-- Breakout 2 — WISTIA_BREAKOUT_2 -->
-        <article class="b-card">
-          <div class="video-ph" role="img" aria-label="Video placeholder">
-            <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l15 8-15 8z"/></svg></span>
-            <span class="video-ph__sub">Breakout Video 2 Placeholder</span>
-          </div>
-          <div class="b-body">
+        <article class="b-item">
+          <div class="b-head">
             <p class="b-num">Video 2</p>
             <h3>Virtual Design vs. Full Project Management</h3>
             <p class="b-desc">Which service fits your property, budget, and how hands-on you want to be.</p>
           </div>
+          <div class="b-video">
+            <div class="video-ph" role="img" aria-label="Video placeholder">
+              <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l15 8-15 8z"/></svg></span>
+              <span class="video-ph__label">Breakout Video 2 Placeholder</span>
+              <span class="video-ph__sub">Wistia embed goes here</span>
+            </div>
+          </div>
         </article>
 
         <!-- Breakout 3 — WISTIA_BREAKOUT_3 -->
-        <article class="b-card">
-          <div class="video-ph" role="img" aria-label="Video placeholder">
-            <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l15 8-15 8z"/></svg></span>
-            <span class="video-ph__sub">Breakout Video 3 Placeholder</span>
-          </div>
-          <div class="b-body">
+        <article class="b-item">
+          <div class="b-head">
             <p class="b-num">Video 3</p>
             <h3>How Long a Project Takes</h3>
             <p class="b-desc">From kickoff to photoshoot: the timeline and how we keep your listing live fast.</p>
           </div>
+          <div class="b-video">
+            <div class="video-ph" role="img" aria-label="Video placeholder">
+              <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l15 8-15 8z"/></svg></span>
+              <span class="video-ph__label">Breakout Video 3 Placeholder</span>
+              <span class="video-ph__sub">Wistia embed goes here</span>
+            </div>
+          </div>
         </article>
 
         <!-- Breakout 4 — WISTIA_BREAKOUT_4 -->
-        <article class="b-card">
-          <div class="video-ph" role="img" aria-label="Video placeholder">
-            <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l15 8-15 8z"/></svg></span>
-            <span class="video-ph__sub">Breakout Video 4 Placeholder</span>
-          </div>
-          <div class="b-body">
+        <article class="b-item">
+          <div class="b-head">
             <p class="b-num">Video 4</p>
             <h3>How We Use Market Data to Pick Upgrades</h3>
             <p class="b-desc">Comps, amenities, guest count: why we never guess what guests want.</p>
           </div>
+          <div class="b-video">
+            <div class="video-ph" role="img" aria-label="Video placeholder">
+              <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l15 8-15 8z"/></svg></span>
+              <span class="video-ph__label">Breakout Video 4 Placeholder</span>
+              <span class="video-ph__sub">Wistia embed goes here</span>
+            </div>
+          </div>
         </article>
 
         <!-- Breakout 5 — WISTIA_BREAKOUT_5 -->
-        <article class="b-card">
-          <div class="video-ph" role="img" aria-label="Video placeholder">
-            <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l15 8-15 8z"/></svg></span>
-            <span class="video-ph__sub">Breakout Video 5 Placeholder</span>
-          </div>
-          <div class="b-body">
+        <article class="b-item">
+          <div class="b-head">
             <p class="b-num">Video 5</p>
             <h3>What Happens On Your Strategy Call</h3>
             <p class="b-desc">What we'll review, what to have ready, and what you'll walk away with.</p>
+          </div>
+          <div class="b-video">
+            <div class="video-ph" role="img" aria-label="Video placeholder">
+              <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l15 8-15 8z"/></svg></span>
+              <span class="video-ph__label">Breakout Video 5 Placeholder</span>
+              <span class="video-ph__sub">Wistia embed goes here</span>
+            </div>
           </div>
         </article>
       </div>

@@ -10,9 +10,10 @@
   QUICK-SWAP CONFIG (search for these to update):
     1) WISTIA_VSL_ID — the VSL. Swap the .video-ph placeholder for the
        Wistia embed in the comment right above it (1 place).
+    1b) WISTIA_TESTIMONIAL_1 … _6 — the 6 testimonial videos.
     2) TYPEFORM_FORM_ID — your Typeform form id (2 places, both CTA buttons).
     3) TRACKING PIXELS — paste Meta/Google tags in the marked slot below.
-    4) [PLACEHOLDER: ...] — replace every bracketed placeholder with real content.
+    4) Featured In logos load from assets/featured/*.png (see README).
 -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -116,8 +117,8 @@
   }
   .subheadline{
     max-width:720px; margin:18px auto 0;
-    font-size:clamp(17px, 2vw, 20px); font-style:italic;
-    color:var(--color-on-teal-muted);
+    font-size:clamp(17px, 2vw, 20px); font-style:italic; font-weight:700;
+    color:var(--color-on-teal);
   }
   .video-label{
     margin:34px 0 0;
@@ -170,38 +171,30 @@
     display:flex; flex-wrap:wrap; justify-content:center; align-items:center;
     gap:18px 36px;
   }
-  /* Text wordmarks — swap each <li> for an <img> of the outlet logo when you have it */
-  .featured-list li{
-    font-family:var(--font-heading); font-weight:700;
-    font-size:clamp(15px, 1.8vw, 19px); color:var(--color-teal);
-    opacity:.75; white-space:nowrap;
+  /* Outlet logos, shown in one muted tone so mismatched brand colors read as a set.
+     Until a logo file exists, the alt text renders as a styled wordmark instead. */
+  .featured-list li{ display:flex; align-items:center; }
+  .featured-list img{
+    height:clamp(22px, 2.6vw, 30px); width:auto; max-width:170px; object-fit:contain;
+    filter:grayscale(1) brightness(.45); opacity:.8;
   }
-  .featured-list li.serif{ font-family:Georgia, 'Times New Roman', serif; font-weight:700; letter-spacing:.02em; }
+  .logo-fallback{
+    font-family:var(--font-heading); font-weight:700; font-size:clamp(15px, 1.8vw, 19px);
+    color:var(--color-teal); opacity:.75; white-space:nowrap;
+  }
 
   /* Testimonials */
   .testimonials{ background:var(--color-aqua); padding:56px 0 64px; }
   .section-head{ text-align:center; max-width:680px; margin:0 auto 36px; }
   .section-head h2{ font-size:clamp(26px, 3.6vw, 38px); font-weight:800; color:var(--color-ink); line-height:1.15; }
   .wall{
-    columns:3 300px; column-gap:20px;
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    gap:20px;
   }
-  .wall > *{ break-inside:avoid; margin:0 0 20px; }
   .t-card{
-    background:var(--color-cream);
     border:2px solid var(--color-teal);
     border-radius:var(--radius-md);
     overflow:hidden;
-  }
-  .t-card .video-ph{ border-radius:0; }
-  .t-body{ padding:20px 22px 22px; }
-  .t-stars{ color:var(--color-gold); letter-spacing:2px; font-size:16px; margin:0 0 10px; }
-  .t-quote{ margin:0; font-size:16px; color:var(--color-ink); }
-  .t-who{ margin:14px 0 0; font-family:var(--font-heading); font-weight:700; font-size:16px; color:var(--color-ink); }
-  .t-where{ display:block; font-family:var(--font-body); font-weight:500; font-size:14px; color:var(--color-coral-dark); }
-  .t-shot{
-    aspect-ratio:1/1; display:flex; align-items:center; justify-content:center;
-    background:repeating-linear-gradient(135deg, var(--color-cream), var(--color-cream) 14px, #fbeee2 14px, #fbeee2 28px);
-    color:var(--color-ink-muted); font-size:14px; text-align:center; padding:20px;
   }
 
   /* CTA repeat */
@@ -241,7 +234,7 @@
   <section class="hero">
     <div class="container hero-inner">
       <p class="eyebrow">For STR Owners Ready to Improve Property Performance</p>
-      <h1 class="headline">How Somerled Clients Are Increasing Their STR Revenue by <span class="hl">30%</span> and Occupancy by <span class="hl">40%</span> on Average in 2026</h1>
+      <h1 class="headline">How Somerled Clients Are Increasing Their <span class="hl">STR Revenue</span> by <span class="hl">30%</span> and Occupancy by <span class="hl">40%</span> on Average in 2026</h1>
       <p class="subheadline">Without wasting money on the wrong upgrades, guessing what guests want, or managing the redesign yourself.</p>
 
       <p class="video-label"><span>Step 1:</span> Watch The Video Below</p>
@@ -274,14 +267,14 @@
     <div class="container">
       <p class="section-kicker">As Featured In</p>
       <ul class="featured-list">
-        <li>Business Insider</li>
-        <li class="serif">PEOPLE</li>
-        <li class="serif">Architectural Digest</li>
-        <li>Home Accents Today</li>
-        <li>bravo</li>
-        <li class="serif">The Spruce</li>
-        <li>The Business Journals</li>
-        <li>PR Newswire</li>
+        <li><img src="https://raw.githubusercontent.com/danielkelleyy/Beacon-Media/claude/peaceful-brown-t2mdo4/clients/somerled/assets/featured/business-insider.png" alt="Business Insider" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'logo-fallback',textContent:this.alt}))"></li>
+        <li><img src="https://raw.githubusercontent.com/danielkelleyy/Beacon-Media/claude/peaceful-brown-t2mdo4/clients/somerled/assets/featured/people.png" alt="People" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'logo-fallback',textContent:this.alt}))"></li>
+        <li><img src="https://raw.githubusercontent.com/danielkelleyy/Beacon-Media/claude/peaceful-brown-t2mdo4/clients/somerled/assets/featured/architectural-digest.png" alt="Architectural Digest" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'logo-fallback',textContent:this.alt}))"></li>
+        <li><img src="https://raw.githubusercontent.com/danielkelleyy/Beacon-Media/claude/peaceful-brown-t2mdo4/clients/somerled/assets/featured/home-accents-today.png" alt="Home Accents Today" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'logo-fallback',textContent:this.alt}))"></li>
+        <li><img src="https://raw.githubusercontent.com/danielkelleyy/Beacon-Media/claude/peaceful-brown-t2mdo4/clients/somerled/assets/featured/bravo.png" alt="Bravo" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'logo-fallback',textContent:this.alt}))"></li>
+        <li><img src="https://raw.githubusercontent.com/danielkelleyy/Beacon-Media/claude/peaceful-brown-t2mdo4/clients/somerled/assets/featured/the-spruce.png" alt="The Spruce" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'logo-fallback',textContent:this.alt}))"></li>
+        <li><img src="https://raw.githubusercontent.com/danielkelleyy/Beacon-Media/claude/peaceful-brown-t2mdo4/clients/somerled/assets/featured/the-business-journals.png" alt="The Business Journals" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'logo-fallback',textContent:this.alt}))"></li>
+        <li><img src="https://raw.githubusercontent.com/danielkelleyy/Beacon-Media/claude/peaceful-brown-t2mdo4/clients/somerled/assets/featured/pr-newswire.png" alt="PR Newswire" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'logo-fallback',textContent:this.alt}))"></li>
       </ul>
     </div>
   </section>
@@ -291,56 +284,58 @@
   <section class="testimonials">
     <div class="container">
       <div class="section-head">
-        <p class="section-kicker">Real Investors, Real Results</p>
+        <p class="section-kicker">Testimonials</p>
         <h2>Over 1,000+ Profitable STRs Designed By Somerled</h2>
       </div>
 
-      <!-- Testimonial wall. Video cards: swap .video-ph for a <wistia-player> (see VSL comment for the snippet).
-           Screenshot cards: swap .t-shot for <img src="FULL_URL" alt="...">. -->
+      <!-- Testimonial wall: swap each .video-ph for a <wistia-player> (see the VSL comment for the snippet). -->
       <div class="wall">
+        <!-- Testimonial 1 — WISTIA_TESTIMONIAL_1 -->
         <div class="t-card">
           <div class="video-ph" role="img" aria-label="Testimonial video placeholder">
             <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l15 8-15 8z"/></svg></span>
-            <span class="video-ph__label">Testimonial Video</span>
-          </div>
-          <div class="t-body">
-            <p class="t-quote">"Holly House has been live on Airbnb for 30 days, and we've already had 30 weekends fully booked for bachelorette parties&hellip; we're feening for our 2nd property."</p>
-            <p class="t-who">Haley <span class="t-where">Scottsdale, AZ</span></p>
+            <span class="video-ph__label">Testimonial Video 1</span>
+            <span class="video-ph__sub">Wistia embed goes here</span>
           </div>
         </div>
-
-        <div class="t-card">
-          <div class="t-body">
-            <p class="t-stars" aria-label="5 stars">★★★★★</p>
-            <p class="t-quote">[PLACEHOLDER: Short written testimonial with a specific result — revenue, occupancy, nightly rate, or reviews.]</p>
-            <p class="t-who">[Client Name] <span class="t-where">[City, ST]</span></p>
-          </div>
-        </div>
-
-        <div class="t-card">
-          <div class="t-shot">[PLACEHOLDER: Screenshot — client text/DM or Airbnb revenue dashboard]</div>
-        </div>
-
+        <!-- Testimonial 2 — WISTIA_TESTIMONIAL_2 -->
         <div class="t-card">
           <div class="video-ph" role="img" aria-label="Testimonial video placeholder">
             <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l15 8-15 8z"/></svg></span>
-            <span class="video-ph__label">Testimonial Video</span>
-          </div>
-          <div class="t-body">
-            <p class="t-quote">"Rather than just saying 'this is gonna be a beautiful home', we looked at all the comps in the area&hellip; and put a plan together of what was going to produce the highest ROI."</p>
-            <p class="t-who">Kyle <span class="t-where">Denver, CO</span></p>
+            <span class="video-ph__label">Testimonial Video 2</span>
+            <span class="video-ph__sub">Wistia embed goes here</span>
           </div>
         </div>
-
+        <!-- Testimonial 3 — WISTIA_TESTIMONIAL_3 -->
         <div class="t-card">
-          <div class="t-shot">[PLACEHOLDER: Screenshot — before/after listing performance]</div>
+          <div class="video-ph" role="img" aria-label="Testimonial video placeholder">
+            <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l15 8-15 8z"/></svg></span>
+            <span class="video-ph__label">Testimonial Video 3</span>
+            <span class="video-ph__sub">Wistia embed goes here</span>
+          </div>
         </div>
-
+        <!-- Testimonial 4 — WISTIA_TESTIMONIAL_4 -->
         <div class="t-card">
-          <div class="t-body">
-            <p class="t-stars" aria-label="5 stars">★★★★★</p>
-            <p class="t-quote">[PLACEHOLDER: Short written testimonial with a specific result.]</p>
-            <p class="t-who">[Client Name] <span class="t-where">[City, ST]</span></p>
+          <div class="video-ph" role="img" aria-label="Testimonial video placeholder">
+            <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l15 8-15 8z"/></svg></span>
+            <span class="video-ph__label">Testimonial Video 4</span>
+            <span class="video-ph__sub">Wistia embed goes here</span>
+          </div>
+        </div>
+        <!-- Testimonial 5 — WISTIA_TESTIMONIAL_5 -->
+        <div class="t-card">
+          <div class="video-ph" role="img" aria-label="Testimonial video placeholder">
+            <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l15 8-15 8z"/></svg></span>
+            <span class="video-ph__label">Testimonial Video 5</span>
+            <span class="video-ph__sub">Wistia embed goes here</span>
+          </div>
+        </div>
+        <!-- Testimonial 6 — WISTIA_TESTIMONIAL_6 -->
+        <div class="t-card">
+          <div class="video-ph" role="img" aria-label="Testimonial video placeholder">
+            <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l15 8-15 8z"/></svg></span>
+            <span class="video-ph__label">Testimonial Video 6</span>
+            <span class="video-ph__sub">Wistia embed goes here</span>
           </div>
         </div>
       </div>
