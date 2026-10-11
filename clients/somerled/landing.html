@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+  SOMERLED DESIGNS — LANDING PAGE
+  Paste this whole file into a GHL Funnel/Website page's Custom Code (HTML)
+  element, with the page's default header/footer/theme disabled so this
+  markup owns the full page. See clients/somerled/README.md for setup.
+
+  QUICK-SWAP CONFIG (search for these to update):
+    1) WISTIA_VSL_ID — the VSL. Swap the .video-ph placeholder for the
+       Wistia embed in the comment right above it (1 place).
+    2) TYPEFORM_FORM_ID — your Typeform form id (2 places, both CTA buttons).
+    3) TRACKING PIXELS — paste Meta/Google tags in the marked slot below.
+    4) [PLACEHOLDER: ...] — replace every bracketed placeholder with real content.
+-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Somerled — Free Design Strategy for STR Owners</title>
+<meta name="description" content="How Somerled clients are increasing STR revenue by 30% and occupancy by 40% on average — without wasting money on the wrong upgrades.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Figtree:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+<!-- ================= TRACKING PIXELS: paste Meta Pixel / Google Ads / GTM here ================= -->
+<!-- ================================================================================================ -->
+
+<style>
+  :root{
+    --color-teal:#194b59;
+    --color-teal-deep:#123a45;
+    --color-coral:#cf7a6f;
+    --color-coral-dark:#b8645a;
+    --color-coral-soft:#f4a99d;
+    --color-aqua:#dff6f8;
+    --color-cream:#fff6ed;
+    --color-blush:#efcac0;
+    --color-gold:#d6b05c;
+    --color-ink:#1d1d1f;
+    --color-ink-muted:#4f5b60;
+    --color-on-teal:#ffffff;
+    --color-on-teal-muted:rgba(255,255,255,.78);
+    --font-heading:'Outfit', sans-serif;
+    --font-body:'Figtree', sans-serif;
+    --radius-md:18px;
+    --radius-lg:24px;
+    --shadow-md:0 24px 48px -24px rgba(18,58,69,.55);
+    --container-w:1120px;
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{ margin:0; overflow-x:hidden; }
+  /* Styled on our own wrapper, not `body` — GHL sets its own background on
+     the real <body>, often inline, which beats a plain `body{}` rule. The
+     100vw breakout escapes any GHL Row/Column width constraints. */
+  .sd-root{
+    min-height:100vh;
+    width:100vw;
+    margin-left:calc(50% - 50vw);
+    margin-right:calc(50% - 50vw);
+    overflow-x:hidden;
+    background:var(--color-cream) !important;
+    color:var(--color-ink) !important;
+    font-family:var(--font-body);
+    font-size:17px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{ max-width:100%; display:block; }
+  .container{ width:100%; max-width:var(--container-w); margin:0 auto; padding:0 20px; }
+
+  h1,h2,h3{ font-family:var(--font-heading); margin:0; }
+  .hl{ color:var(--color-coral-soft); }
+
+  /* Header */
+  .site-header{ background:var(--color-teal); }
+  .header-inner{ display:flex; align-items:center; justify-content:center; padding:20px; }
+  .logo{ display:inline-flex; text-decoration:none; }
+  .logo img{ height:26px; width:auto; }
+
+  /* Buttons */
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:10px;
+    font-family:var(--font-heading); font-weight:700; font-size:18px;
+    padding:18px 40px; border-radius:14px; border:none; cursor:pointer;
+    text-decoration:none; text-align:center;
+    transition:transform .15s ease, background .15s ease, box-shadow .15s ease;
+  }
+  .btn-primary{
+    background:var(--color-coral); color:#ffffff;
+    box-shadow:0 14px 28px -12px rgba(207,122,111,.75);
+  }
+  .btn-primary:hover{ background:var(--color-coral-dark); transform:translateY(-1px); }
+  .btn-primary svg{ width:18px; height:18px; }
+  .cta-wrap{ display:flex; flex-direction:column; align-items:center; gap:12px; margin-top:32px; }
+  .cta-note{ margin:0; font-size:14px; color:var(--color-on-teal-muted); }
+
+  /* Hero */
+  .hero{ background:var(--color-teal); color:var(--color-on-teal); padding:28px 0 56px; }
+  .hero-inner{ max-width:900px; margin:0 auto; text-align:center; }
+  .eyebrow{
+    display:inline-block;
+    font-family:var(--font-heading); font-weight:700; font-size:13px;
+    letter-spacing:.12em; text-transform:uppercase;
+    color:var(--color-teal); background:var(--color-aqua);
+    padding:8px 16px; border-radius:999px; margin:0 0 22px;
+  }
+  .eyebrow::before{ content:"● "; color:var(--color-coral); animation:pulse 1.6s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{ opacity:1; } 50%{ opacity:.25; } }
+  .headline{
+    color:var(--color-on-teal);
+    font-size:clamp(28px, 4.6vw, 50px); font-weight:800;
+    line-height:1.12; letter-spacing:-.015em;
+  }
+  .subheadline{
+    max-width:720px; margin:18px auto 0;
+    font-size:clamp(17px, 2vw, 20px); font-style:italic;
+    color:var(--color-on-teal-muted);
+  }
+  .video-label{
+    margin:34px 0 0;
+    font-family:var(--font-heading); font-weight:700; font-size:14px;
+    letter-spacing:.1em; text-transform:uppercase;
+  }
+  .video-label span{ color:var(--color-coral-soft); }
+
+  /* Video placeholder (swap for the Wistia embed in the comment above each one) */
+  .video-wrap{
+    margin:14px auto 0; max-width:840px;
+    border-radius:var(--radius-lg); overflow:hidden;
+    box-shadow:var(--shadow-md);
+    border:3px solid rgba(255,255,255,.9);
+  }
+  .video-ph{
+    position:relative; aspect-ratio:16/9; width:100%;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px;
+    background:
+      radial-gradient(ellipse at 30% 20%, rgba(244,169,157,.35), transparent 60%),
+      radial-gradient(ellipse at 80% 90%, rgba(223,246,248,.25), transparent 55%),
+      var(--color-teal-deep);
+    color:#ffffff; text-align:center; padding:16px;
+  }
+  .video-ph .play{
+    width:clamp(56px, 9vw, 84px); height:clamp(56px, 9vw, 84px);
+    border-radius:50%; background:var(--color-coral);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 0 0 10px rgba(207,122,111,.25);
+  }
+  .video-ph .play svg{ width:40%; height:40%; margin-left:6%; fill:#ffffff; }
+  .video-ph__label{ font-family:var(--font-heading); font-weight:700; font-size:clamp(15px, 2vw, 20px); }
+  .video-ph__sub{ font-size:13px; opacity:.7; }
+
+  /* Wave dividers */
+  .wave{ display:block; width:100%; height:48px; }
+  .wave--teal-cream{ background:var(--color-cream); }
+  .wave--cream-aqua{ background:var(--color-aqua); }
+  .wave--aqua-teal{ background:var(--color-teal); }
+
+  /* Featured In */
+  .featured{ background:var(--color-cream); padding:36px 0 44px; text-align:center; }
+  .section-kicker{
+    font-family:var(--font-heading); font-weight:700; font-size:13px;
+    letter-spacing:.14em; text-transform:uppercase; color:var(--color-coral-dark);
+    margin:0 0 20px;
+  }
+  .featured-list{
+    list-style:none; margin:0; padding:0;
+    display:flex; flex-wrap:wrap; justify-content:center; align-items:center;
+    gap:18px 36px;
+  }
+  /* Text wordmarks — swap each <li> for an <img> of the outlet logo when you have it */
+  .featured-list li{
+    font-family:var(--font-heading); font-weight:700;
+    font-size:clamp(15px, 1.8vw, 19px); color:var(--color-teal);
+    opacity:.75; white-space:nowrap;
+  }
+  .featured-list li.serif{ font-family:Georgia, 'Times New Roman', serif; font-weight:700; letter-spacing:.02em; }
+
+  /* Testimonials */
+  .testimonials{ background:var(--color-aqua); padding:56px 0 64px; }
+  .section-head{ text-align:center; max-width:680px; margin:0 auto 36px; }
+  .section-head h2{ font-size:clamp(26px, 3.6vw, 38px); font-weight:800; color:var(--color-ink); line-height:1.15; }
+  .wall{
+    columns:3 300px; column-gap:20px;
+  }
+  .wall > *{ break-inside:avoid; margin:0 0 20px; }
+  .t-card{
+    background:var(--color-cream);
+    border:2px solid var(--color-teal);
+    border-radius:var(--radius-md);
+    overflow:hidden;
+  }
+  .t-card .video-ph{ border-radius:0; }
+  .t-body{ padding:20px 22px 22px; }
+  .t-stars{ color:var(--color-gold); letter-spacing:2px; font-size:16px; margin:0 0 10px; }
+  .t-quote{ margin:0; font-size:16px; color:var(--color-ink); }
+  .t-who{ margin:14px 0 0; font-family:var(--font-heading); font-weight:700; font-size:16px; color:var(--color-ink); }
+  .t-where{ display:block; font-family:var(--font-body); font-weight:500; font-size:14px; color:var(--color-coral-dark); }
+  .t-shot{
+    aspect-ratio:1/1; display:flex; align-items:center; justify-content:center;
+    background:repeating-linear-gradient(135deg, var(--color-cream), var(--color-cream) 14px, #fbeee2 14px, #fbeee2 28px);
+    color:var(--color-ink-muted); font-size:14px; text-align:center; padding:20px;
+  }
+
+  /* CTA repeat */
+  .cta-repeat{ background:var(--color-teal); color:var(--color-on-teal); padding:40px 0 72px; text-align:center; }
+  .cta-repeat h2{ color:var(--color-on-teal); font-size:clamp(24px, 3.4vw, 36px); font-weight:800; line-height:1.2; max-width:760px; margin:0 auto; }
+  .cta-repeat .cta-wrap{ margin-top:28px; }
+
+  /* Footer */
+  .site-footer{ background:var(--color-teal-deep); padding:36px 0; }
+  .footer-inner{ display:flex; flex-direction:column; align-items:center; gap:12px; text-align:center; }
+  .legal{ color:var(--color-on-teal-muted); font-size:13px; margin:0; }
+
+  @media (max-width:560px){
+    .sd-root{ font-size:16px; }
+    .hero{ padding:20px 0 44px; }
+    .eyebrow{ font-size:11px; letter-spacing:.08em; padding:7px 12px; }
+    .headline{ font-size:27px; }
+    .btn{ width:100%; padding:18px 20px; }
+    .video-wrap{ border-width:2px; border-radius:16px; }
+    .wave{ height:28px; }
+    .featured-list{ gap:12px 22px; }
+  }
+</style>
+</head>
+<body>
+<div class="sd-root">
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="#" aria-label="Somerled">
+      <img src="https://raw.githubusercontent.com/danielkelleyy/Beacon-Media/claude/peaceful-brown-t2mdo4/clients/somerled/assets/logo-white.png" alt="Somerled">
+    </a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container hero-inner">
+      <p class="eyebrow">For STR Owners Ready to Improve Property Performance</p>
+      <h1 class="headline">How Somerled Clients Are Increasing Their STR Revenue by <span class="hl">30%</span> and Occupancy by <span class="hl">40%</span> on Average in 2026</h1>
+      <p class="subheadline">Without wasting money on the wrong upgrades, guessing what guests want, or managing the redesign yourself.</p>
+
+      <p class="video-label"><span>Step 1:</span> Watch The Video Below</p>
+      <div class="video-wrap">
+        <!-- VSL — replace the .video-ph div below with:
+        <script src="https://fast.wistia.com/player.js" async></script>
+        <script src="https://fast.wistia.com/embed/WISTIA_VSL_ID.js" async type="module"></script>
+        <wistia-player media-id="WISTIA_VSL_ID" aspect="1.7777777777777777"></wistia-player>
+        -->
+        <div class="video-ph" role="img" aria-label="Video placeholder">
+          <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l15 8-15 8z"/></svg></span>
+          <span class="video-ph__label">VSL Video Placeholder</span>
+          <span class="video-ph__sub">Wistia embed goes here (~5 min)</span>
+        </div>
+      </div>
+
+      <div class="cta-wrap">
+        <button type="button" class="btn btn-primary" data-tf-popup="TYPEFORM_FORM_ID" data-tf-opacity="100" data-tf-iframe-props="title=Somerled Free Design Strategy">
+          Free Design Strategy
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+        <p class="cta-note">Takes 2 minutes &middot; No obligation</p>
+      </div>
+    </div>
+  </section>
+
+  <svg class="wave wave--teal-cream" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true"><path fill="#194b59" d="M0 0h1440v18c-120 0-120 30-240 30S1080 18 960 18 840 48 720 48 600 18 480 18 360 48 240 48 120 18 0 18z"/></svg>
+
+  <section class="featured">
+    <div class="container">
+      <p class="section-kicker">As Featured In</p>
+      <ul class="featured-list">
+        <li>Business Insider</li>
+        <li class="serif">PEOPLE</li>
+        <li class="serif">Architectural Digest</li>
+        <li>Home Accents Today</li>
+        <li>bravo</li>
+        <li class="serif">The Spruce</li>
+        <li>The Business Journals</li>
+        <li>PR Newswire</li>
+      </ul>
+    </div>
+  </section>
+
+  <svg class="wave wave--cream-aqua" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true"><path fill="#fff6ed" d="M0 0h1440v18c-120 0-120 30-240 30S1080 18 960 18 840 48 720 48 600 18 480 18 360 48 240 48 120 18 0 18z"/></svg>
+
+  <section class="testimonials">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-kicker">Real Investors, Real Results</p>
+        <h2>Over 1,000+ Profitable STRs Designed By Somerled</h2>
+      </div>
+
+      <!-- Testimonial wall. Video cards: swap .video-ph for a <wistia-player> (see VSL comment for the snippet).
+           Screenshot cards: swap .t-shot for <img src="FULL_URL" alt="...">. -->
+      <div class="wall">
+        <div class="t-card">
+          <div class="video-ph" role="img" aria-label="Testimonial video placeholder">
+            <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l15 8-15 8z"/></svg></span>
+            <span class="video-ph__label">Testimonial Video</span>
+          </div>
+          <div class="t-body">
+            <p class="t-quote">"Holly House has been live on Airbnb for 30 days, and we've already had 30 weekends fully booked for bachelorette parties&hellip; we're feening for our 2nd property."</p>
+            <p class="t-who">Haley <span class="t-where">Scottsdale, AZ</span></p>
+          </div>
+        </div>
+
+        <div class="t-card">
+          <div class="t-body">
+            <p class="t-stars" aria-label="5 stars">★★★★★</p>
+            <p class="t-quote">[PLACEHOLDER: Short written testimonial with a specific result — revenue, occupancy, nightly rate, or reviews.]</p>
+            <p class="t-who">[Client Name] <span class="t-where">[City, ST]</span></p>
+          </div>
+        </div>
+
+        <div class="t-card">
+          <div class="t-shot">[PLACEHOLDER: Screenshot — client text/DM or Airbnb revenue dashboard]</div>
+        </div>
+
+        <div class="t-card">
+          <div class="video-ph" role="img" aria-label="Testimonial video placeholder">
+            <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l15 8-15 8z"/></svg></span>
+            <span class="video-ph__label">Testimonial Video</span>
+          </div>
+          <div class="t-body">
+            <p class="t-quote">"Rather than just saying 'this is gonna be a beautiful home', we looked at all the comps in the area&hellip; and put a plan together of what was going to produce the highest ROI."</p>
+            <p class="t-who">Kyle <span class="t-where">Denver, CO</span></p>
+          </div>
+        </div>
+
+        <div class="t-card">
+          <div class="t-shot">[PLACEHOLDER: Screenshot — before/after listing performance]</div>
+        </div>
+
+        <div class="t-card">
+          <div class="t-body">
+            <p class="t-stars" aria-label="5 stars">★★★★★</p>
+            <p class="t-quote">[PLACEHOLDER: Short written testimonial with a specific result.]</p>
+            <p class="t-who">[Client Name] <span class="t-where">[City, ST]</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <svg class="wave wave--aqua-teal" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true"><path fill="#dff6f8" d="M0 0h1440v18c-120 0-120 30-240 30S1080 18 960 18 840 48 720 48 600 18 480 18 360 48 240 48 120 18 0 18z"/></svg>
+
+  <section class="cta-repeat">
+    <div class="container">
+      <h2>Ready To Turn Your STR Into A Top Performing Property?</h2>
+      <div class="cta-wrap">
+        <button type="button" class="btn btn-primary" data-tf-popup="TYPEFORM_FORM_ID" data-tf-opacity="100" data-tf-iframe-props="title=Somerled Free Design Strategy">
+          Free Design Strategy
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <a class="logo" href="#" aria-label="Somerled">
+      <img src="https://raw.githubusercontent.com/danielkelleyy/Beacon-Media/claude/peaceful-brown-t2mdo4/clients/somerled/assets/logo-white.png" alt="Somerled">
+    </a>
+    <p class="legal">&copy; <span id="year"></span> Somerled Designs. All rights reserved.</p>
+  </div>
+</footer>
+
+</div>
+<script src="//embed.typeform.com/next/embed.js"></script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

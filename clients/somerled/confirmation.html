@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+  SOMERLED DESIGNS — CONFIRMATION PAGE
+  Shown to applicants Typeform marks as qualified (after they book).
+  Goal: pre-handle objections and pre-sell before the call.
+
+  QUICK-SWAP CONFIG (search for these to update):
+    1) WISTIA_CONFIRM_ID — main confirmation video (1 place).
+    2) WISTIA_BREAKOUT_1 … WISTIA_BREAKOUT_5 — the 5 breakout videos.
+       Swap each .video-ph placeholder for the Wistia embed shown in the
+       comment above the confirmation video.
+    3) TRACKING PIXELS + CONVERSION EVENT — marked slots below.
+    4) Breakout titles/descriptions are editable starter copy.
+-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Somerled — You're Booked</title>
+<meta name="robots" content="noindex">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Figtree:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+<!-- ================= TRACKING PIXELS: paste Meta Pixel / Google Ads / GTM here ================= -->
+<!-- ================================================================================================ -->
+
+<!-- ================= CONVERSION EVENT: e.g. fbq('track', 'Schedule') goes here ================= -->
+<!-- ============================================================================================== -->
+
+<style>
+  :root{
+    --color-teal:#194b59;
+    --color-teal-deep:#123a45;
+    --color-coral:#cf7a6f;
+    --color-coral-dark:#b8645a;
+    --color-coral-soft:#f4a99d;
+    --color-aqua:#dff6f8;
+    --color-cream:#fff6ed;
+    --color-blush:#efcac0;
+    --color-gold:#d6b05c;
+    --color-ink:#1d1d1f;
+    --color-ink-muted:#4f5b60;
+    --color-on-teal:#ffffff;
+    --color-on-teal-muted:rgba(255,255,255,.78);
+    --font-heading:'Outfit', sans-serif;
+    --font-body:'Figtree', sans-serif;
+    --radius-md:18px;
+    --radius-lg:24px;
+    --shadow-md:0 24px 48px -24px rgba(18,58,69,.55);
+    --container-w:1120px;
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  body{ margin:0; overflow-x:hidden; }
+  .sd-root{
+    min-height:100vh;
+    width:100vw;
+    margin-left:calc(50% - 50vw);
+    margin-right:calc(50% - 50vw);
+    overflow-x:hidden;
+    background:var(--color-aqua) !important;
+    color:var(--color-ink) !important;
+    font-family:var(--font-body);
+    font-size:17px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{ max-width:100%; display:block; }
+  .container{ width:100%; max-width:var(--container-w); margin:0 auto; padding:0 20px; }
+  h1,h2,h3{ font-family:var(--font-heading); margin:0; }
+  .hl{ color:var(--color-coral-soft); }
+
+  .site-header{ background:var(--color-teal); }
+  .header-inner{ display:flex; align-items:center; justify-content:center; padding:20px; }
+  .logo{ display:inline-flex; text-decoration:none; }
+  .logo img{ height:26px; width:auto; }
+
+  /* Hero / status */
+  .hero{ background:var(--color-teal); color:var(--color-on-teal); padding:28px 0 56px; }
+  .hero-inner{ max-width:880px; margin:0 auto; text-align:center; }
+  .status-icon{
+    width:60px; height:60px; margin:0 auto 18px; border-radius:50%;
+    background:var(--color-aqua); display:flex; align-items:center; justify-content:center;
+  }
+  .status-icon svg{ width:28px; height:28px; }
+  .eyebrow{
+    display:inline-block;
+    font-family:var(--font-heading); font-weight:700; font-size:13px;
+    letter-spacing:.12em; text-transform:uppercase;
+    color:var(--color-teal); background:var(--color-aqua);
+    padding:8px 16px; border-radius:999px; margin:0 0 20px;
+  }
+  .eyebrow::before{ content:"● "; color:var(--color-coral); animation:pulse 1.6s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{ opacity:1; } 50%{ opacity:.25; } }
+  .headline{
+    color:var(--color-on-teal);
+    font-size:clamp(26px, 4vw, 42px); font-weight:800;
+    line-height:1.15; letter-spacing:-.01em;
+  }
+  .subheadline{
+    max-width:680px; margin:16px auto 0;
+    font-size:clamp(16px, 2vw, 19px); font-style:italic; color:var(--color-on-teal-muted);
+  }
+
+  /* Video placeholder */
+  .video-wrap{
+    margin:30px auto 0; max-width:760px;
+    border-radius:var(--radius-lg); overflow:hidden;
+    box-shadow:var(--shadow-md); border:3px solid rgba(255,255,255,.9);
+  }
+  .video-ph{
+    position:relative; aspect-ratio:16/9; width:100%;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px;
+    background:
+      radial-gradient(ellipse at 30% 20%, rgba(244,169,157,.35), transparent 60%),
+      radial-gradient(ellipse at 80% 90%, rgba(223,246,248,.25), transparent 55%),
+      var(--color-teal-deep);
+    color:#ffffff; text-align:center; padding:16px;
+  }
+  .video-ph .play{
+    width:clamp(48px, 8vw, 80px); height:clamp(48px, 8vw, 80px);
+    border-radius:50%; background:var(--color-coral);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 0 0 10px rgba(207,122,111,.25);
+  }
+  .video-ph .play svg{ width:40%; height:40%; margin-left:6%; fill:#ffffff; }
+  .video-ph__label{ font-family:var(--font-heading); font-weight:700; font-size:clamp(15px, 2vw, 20px); }
+  .video-ph__sub{ font-size:13px; opacity:.7; }
+  .fine-print{ margin:18px 0 0; font-size:14px; color:var(--color-on-teal-muted); }
+
+  .wave{ display:block; width:100%; height:48px; background:var(--color-aqua); }
+
+  /* Breakout videos */
+  .breakouts{ padding:48px 0 72px; }
+  .section-head{ text-align:center; max-width:700px; margin:0 auto 36px; }
+  .section-kicker{
+    font-family:var(--font-heading); font-weight:700; font-size:13px;
+    letter-spacing:.14em; text-transform:uppercase; color:var(--color-coral-dark);
+    margin:0 0 12px;
+  }
+  .section-head h2{ font-size:clamp(26px, 3.6vw, 38px); font-weight:800; line-height:1.15; }
+  .section-head p{ margin:12px 0 0; color:var(--color-ink-muted); }
+  .breakout-grid{
+    display:flex; flex-wrap:wrap; justify-content:center; gap:24px;
+  }
+  .b-card{
+    flex:1 1 300px; max-width:350px; min-width:0;
+    background:var(--color-cream);
+    border:2px solid var(--color-teal);
+    border-radius:var(--radius-md);
+    overflow:hidden;
+  }
+  .b-card .video-ph{ gap:6px; }
+  .b-card .video-ph .play{ box-shadow:0 0 0 7px rgba(207,122,111,.25); }
+  .b-body{ padding:18px 20px 22px; }
+  .b-num{
+    font-family:var(--font-heading); font-weight:700; font-size:12px;
+    letter-spacing:.12em; text-transform:uppercase; color:var(--color-coral-dark); margin:0 0 6px;
+  }
+  .b-body h3{ font-size:20px; font-weight:700; line-height:1.25; color:var(--color-ink); }
+  .b-body p.b-desc{ margin:8px 0 0; font-size:15px; color:var(--color-ink-muted); }
+
+  .site-footer{ background:var(--color-teal-deep); padding:36px 0; }
+  .footer-inner{ display:flex; flex-direction:column; align-items:center; gap:12px; text-align:center; }
+  .legal{ color:var(--color-on-teal-muted); font-size:13px; margin:0; }
+
+  @media (max-width:560px){
+    .sd-root{ font-size:16px; }
+    .hero{ padding:20px 0 44px; }
+    .eyebrow{ font-size:11px; letter-spacing:.08em; padding:7px 12px; }
+    .headline{ font-size:25px; }
+    .video-wrap{ border-width:2px; border-radius:16px; }
+    .wave{ height:28px; }
+    .b-card{ max-width:none; }
+  }
+</style>
+</head>
+<body>
+<div class="sd-root">
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="#" aria-label="Somerled">
+      <img src="https://raw.githubusercontent.com/danielkelleyy/Beacon-Media/claude/peaceful-brown-t2mdo4/clients/somerled/assets/logo-white.png" alt="Somerled">
+    </a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="status-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#194b59" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+      </div>
+      <p class="eyebrow">You're Booked</p>
+      <h1 class="headline"><span class="hl">Last Step:</span> Check your email and tap "<span class="hl">Yes</span>" on the invite to confirm your Design Strategy call.</h1>
+      <p class="subheadline">Then watch the short video below. It explains exactly what happens on your call and how to get the most out of it.</p>
+
+      <div class="video-wrap">
+        <!-- CONFIRMATION VIDEO — replace the .video-ph div below with:
+        <script src="https://fast.wistia.com/player.js" async></script>
+        <script src="https://fast.wistia.com/embed/WISTIA_CONFIRM_ID.js" async type="module"></script>
+        <wistia-player media-id="WISTIA_CONFIRM_ID" aspect="1.7777777777777777"></wistia-player>
+        (Load player.js once per page; each video needs its own embed/<ID>.js line.)
+        -->
+        <div class="video-ph" role="img" aria-label="Video placeholder">
+          <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l15 8-15 8z"/></svg></span>
+          <span class="video-ph__label">Confirmation Video Placeholder</span>
+          <span class="video-ph__sub">Wistia embed goes here</span>
+        </div>
+      </div>
+
+      <p class="fine-print">Can't find the invite? Check your spam or promotions folder.</p>
+    </div>
+  </section>
+
+  <svg class="wave" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true"><path fill="#194b59" d="M0 0h1440v18c-120 0-120 30-240 30S1080 18 960 18 840 48 720 48 600 18 480 18 360 48 240 48 120 18 0 18z"/></svg>
+
+  <section class="breakouts">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-kicker">Before Your Call</p>
+        <h2>Watch These So We Can Hit The Ground Running</h2>
+        <p>Quick answers to the questions STR owners ask us most.</p>
+      </div>
+
+      <div class="breakout-grid">
+        <!-- Breakout 1 — WISTIA_BREAKOUT_1 -->
+        <article class="b-card">
+          <div class="video-ph" role="img" aria-label="Video placeholder">
+            <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l15 8-15 8z"/></svg></span>
+            <span class="video-ph__sub">Breakout Video 1 Placeholder</span>
+          </div>
+          <div class="b-body">
+            <p class="b-num">Video 1</p>
+            <h3>What It Costs &amp; The ROI You Can Expect</h3>
+            <p class="b-desc">How we size your design investment to your market, and why it pays for itself.</p>
+          </div>
+        </article>
+
+        <!-- Breakout 2 — WISTIA_BREAKOUT_2 -->
+        <article class="b-card">
+          <div class="video-ph" role="img" aria-label="Video placeholder">
+            <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l15 8-15 8z"/></svg></span>
+            <span class="video-ph__sub">Breakout Video 2 Placeholder</span>
+          </div>
+          <div class="b-body">
+            <p class="b-num">Video 2</p>
+            <h3>Virtual Design vs. Full Project Management</h3>
+            <p class="b-desc">Which service fits your property, budget, and how hands-on you want to be.</p>
+          </div>
+        </article>
+
+        <!-- Breakout 3 — WISTIA_BREAKOUT_3 -->
+        <article class="b-card">
+          <div class="video-ph" role="img" aria-label="Video placeholder">
+            <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l15 8-15 8z"/></svg></span>
+            <span class="video-ph__sub">Breakout Video 3 Placeholder</span>
+          </div>
+          <div class="b-body">
+            <p class="b-num">Video 3</p>
+            <h3>How Long a Project Takes</h3>
+            <p class="b-desc">From kickoff to photoshoot: the timeline and how we keep your listing live fast.</p>
+          </div>
+        </article>
+
+        <!-- Breakout 4 — WISTIA_BREAKOUT_4 -->
+        <article class="b-card">
+          <div class="video-ph" role="img" aria-label="Video placeholder">
+            <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l15 8-15 8z"/></svg></span>
+            <span class="video-ph__sub">Breakout Video 4 Placeholder</span>
+          </div>
+          <div class="b-body">
+            <p class="b-num">Video 4</p>
+            <h3>How We Use Market Data to Pick Upgrades</h3>
+            <p class="b-desc">Comps, amenities, guest count: why we never guess what guests want.</p>
+          </div>
+        </article>
+
+        <!-- Breakout 5 — WISTIA_BREAKOUT_5 -->
+        <article class="b-card">
+          <div class="video-ph" role="img" aria-label="Video placeholder">
+            <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l15 8-15 8z"/></svg></span>
+            <span class="video-ph__sub">Breakout Video 5 Placeholder</span>
+          </div>
+          <div class="b-body">
+            <p class="b-num">Video 5</p>
+            <h3>What Happens On Your Strategy Call</h3>
+            <p class="b-desc">What we'll review, what to have ready, and what you'll walk away with.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <a class="logo" href="#" aria-label="Somerled">
+      <img src="https://raw.githubusercontent.com/danielkelleyy/Beacon-Media/claude/peaceful-brown-t2mdo4/clients/somerled/assets/logo-white.png" alt="Somerled">
+    </a>
+    <p class="legal">&copy; <span id="year"></span> Somerled Designs. All rights reserved.</p>
+  </div>
+</footer>
+
+</div>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
