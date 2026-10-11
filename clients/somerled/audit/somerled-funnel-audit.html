@@ -74,13 +74,14 @@
   .cover{ background:var(--teal); color:#fff; padding:0.7in 0.75in; }
   .cover .logo{ height:30px; width:auto; }
   .cover-grid{ flex:1; display:grid; grid-template-columns:1.05fr 1fr; gap:0.5in; align-items:center; }
+  .cover-grid > *{ min-width:0; }
   .cover h1{ font-size:52pt; font-weight:800; line-height:1.0; letter-spacing:-.02em; color:#fff; }
   .cover h1 span{ color:var(--coral-soft); }
   .cover .tag{ margin-top:18px; font-size:15pt; color:rgba(255,255,255,.86); max-width:4.6in; }
   .cover .eyebrow{ display:inline-block; font-family:var(--font-heading); font-weight:700; font-size:10pt; letter-spacing:.16em; text-transform:uppercase; color:var(--teal); background:var(--aqua); padding:7px 14px; border-radius:999px; margin-bottom:22px; }
-  .cover .meta{ margin-top:34px; display:flex; gap:28px; font-size:10.5pt; color:rgba(255,255,255,.75); }
+  .cover .meta{ margin-top:34px; display:flex; flex-wrap:wrap; gap:14px 28px; font-size:10.5pt; color:rgba(255,255,255,.75); }
   .cover .meta b{ display:block; white-space:nowrap; font-family:var(--font-heading); color:#fff; font-size:12pt; margin-top:2px; }
-  .browser{ background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 30px 60px -20px rgba(0,0,0,.55); transform:rotate(-2deg); }
+  .browser{ background:#fff; border-radius:12px; overflow:hidden; border:1px solid rgba(255,255,255,.35); }
   .browser .bar{ height:22px; background:#e9eef0; display:flex; align-items:center; gap:6px; padding:0 10px; }
   .browser .bar i{ width:8px; height:8px; border-radius:50%; background:#c9d2d5; display:block; }
   .cover-wave{ position:absolute; left:0; right:0; bottom:0; height:0.55in; }
@@ -177,7 +178,7 @@
       <p class="tag">Where your funnel is leaking qualified STR owners, and exactly how to fix it.</p>
       <div class="meta">
         <div>Prepared for<b>Somerled Designs</b></div>
-        <div>Prepared by<b>Daniel Kelley · Beacon Media</b></div>
+        <div>Prepared by<b>Daniel Kelley</b></div>
         <div>Date<b>October 2026</b></div>
       </div>
     </div>
@@ -194,18 +195,18 @@
   <div class="p-head"><div><p class="kicker">Executive Summary</p><h2 class="p-title">The Short Version</h2></div></div>
   <div class="exec">
     <div class="stack" style="gap:20px">
-      <p class="lead">Somerled already has what most firms in this space are missing: <b>real results, real press, and 1,000+ profitable STRs designed</b>.</p>
-      <p class="lead">The opportunity isn't the product. It's the <b>path</b>. Today, paid traffic lands on a page built like a website, prospects fill out two forms to book, and then the funnel goes quiet until the call.</p>
-      <p class="lead">Each of those steps lets qualified owners slip away. The good news: <b>every one of them is fixable</b>, and the new pages are already built.</p>
+      <p class="lead">I went through your funnel the way a new prospect would, filling out both forms and booking a call. Two days later I still hadn't received anything that made the case for Somerled.</p>
+      <p class="lead">That's a shame, because the proof is there: press in Business Insider and AD, plus <b>1,000+ profitable STRs designed</b>. It just never reaches the prospect while they're deciding whether to book.</p>
+      <p class="lead">All of it is fixable. <b>I've already built the new pages.</b></p>
     </div>
     <div class="stack">
       <p class="kicker" style="margin-bottom:2px">The Top 3 Fixes</p>
-      <div class="fix"><div class="num">1</div><div><h3>Rebuild the landing page around a VSL</h3><p>A focused, benefit-led page with a 5-minute video and one action: "Free Design Strategy." Fewer words, more impact, built for mobile first.</p></div></div>
+      <div class="fix"><div class="num">1</div><div><h3>Rebuild the landing page around a VSL</h3><p>A focused, benefit-led page with a 5-minute video and one action: "Free Design Strategy." Less copy, and designed for phones first.</p></div></div>
       <div class="fix"><div class="num">2</div><div><h3>One form, not two</h3><p>Replace the website form + Calendly combo with a single Typeform that saves partial responses, so every half-finished application can still be followed up.</p></div></div>
-      <div class="fix"><div class="num">3</div><div><h3>Pre-sell before the call</h3><p>A confirmation page with objection-handling videos, two value-packed emails a day, and retargeting ads, so prospects show up already convinced.</p></div></div>
+      <div class="fix"><div class="num">3</div><div><h3>Pre-sell before the call</h3><p>Answer objections with videos on the confirmation page, then keep showing up with daily emails and retargeting ads until the call. By then most of the selling is done.</p></div></div>
     </div>
   </div>
-  <div class="p-foot"><span><b>Somerled Funnel Audit</b> · Beacon Media</span><span>2</span></div>
+  <div class="p-foot"><span><b>Somerled Funnel Audit</b> · Daniel Kelley</span><span>2</span></div>
 </section>
 
 <!-- 3. SCORECARD -->
@@ -215,17 +216,17 @@
   </div>
   <div class="funnel">
     <div class="stage amber"><span class="step">Stage 1</span><h3>Ads</h3><span class="chip amber">Needs work</span><p>Good volume, but light on testimonials and static reels for retargeting. Ads aren't offer-led, so the landing page has to do the selling.</p></div>
-    <div class="stage red"><span class="step">Stage 2</span><h3>Landing Page</h3><span class="chip red">Critical</span><p>Built like a website, not a conversion page. No callout, no benefit-led headline, no video, and the mobile layout breaks.</p></div>
+    <div class="stage red"><span class="step">Stage 2</span><h3>Landing Page</h3><span class="chip red">Critical</span><p>Reads like a website. Lots to scroll and nothing pushing visitors to act. There's no video, and the mobile layout breaks.</p></div>
     <div class="stage red"><span class="step">Stage 3</span><h3>Application</h3><span class="chip red">Critical</span><p>Two forms (website form + Calendly) before booking. Nothing is captured from people who start but don't finish.</p></div>
     <div class="stage red"><span class="step">Stage 4</span><h3>Confirmation</h3><span class="chip red">Critical</span><p>A bare "You are scheduled!" screen at the exact moment prospects start asking "why should I show up?"</p></div>
     <div class="stage red"><span class="step">Stage 5</span><h3>Pre-Call</h3><span class="chip red">Critical</span><p>One automated text and two logistics emails. Nothing that builds authority between booking and the call.</p></div>
     <div class="stage amber"><span class="step">Stage 6</span><h3>Content</h3><span class="chip amber">Needs work</span><p>Strong Instagram short-form, but no long-form content (YouTube, masterclass) to nurture buyers.</p></div>
   </div>
   <div style="margin-top:auto; display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end;">
-    <div class="callout"><b>What's working:</b> Somerled's website is beautifully done, the Instagram content is strong, and the proof is real: press features, client results and a 1,000+ property portfolio. The fixes below put that proof in front of prospects at the moments that matter.</div>
+    <div class="callout"><b>What's working:</b> Somerled's website is beautifully done, the Instagram content is strong, and the proof is real: press features, client results and a 1,000+ property portfolio. The fixes in this report put that proof in front of people right when they're deciding whether to book.</div>
     <div class="legend"><span class="chip red">Critical</span><span class="chip amber">Needs work</span></div>
   </div>
-  <div class="p-foot"><span><b>Somerled Funnel Audit</b> · Beacon Media</span><span>3</span></div>
+  <div class="p-foot"><span><b>Somerled Funnel Audit</b> · Daniel Kelley</span><span>3</span></div>
 </section>
 
 <!-- 4. LANDING PAGE — NOW -->
@@ -252,11 +253,11 @@
         <li><b>No callout at the top</b> telling visitors who this is for.</li>
         <li><b>The headline doesn't lead with the #1 benefit.</b> People see 4,000–10,000 brand messages a day; the headline has to stop them.</li>
         <li><b>No video.</b> The ads aren't offer-led, so the page needs to make the offer.</li>
-        <li><b>Mobile breaks:</b> type is oversized, text runs off the screen, and the button is hard to see.</li>
+        <li><b>Mobile breaks.</b> Text runs off the screen and the main button gets squished.</li>
       </ul>
     </div>
   </div>
-  <div class="p-foot"><span><b>Somerled Funnel Audit</b> · Beacon Media</span><span>4</span></div>
+  <div class="p-foot"><span><b>Somerled Funnel Audit</b> · Daniel Kelley</span><span>4</span></div>
 </section>
 
 <!-- 5. LANDING PAGE — REBUILD -->
@@ -272,7 +273,7 @@
         <span class="mk" style="left:77%; top:38%">3</span>
         <span class="mk" style="left:86%; top:56%">4</span>
       </div>
-      <div class="callout"><b>Why less is more:</b> when the information lives in the video, only serious owners take the time to watch. Tire-kickers filter themselves out before they ever book.</div>
+      <div class="callout"><b>Why the page is mostly video:</b> to get the full story, a visitor has to sit through five minutes. Serious owners will. Tire-kickers usually won't, so they filter themselves out before they ever book.</div>
     </div>
     <div class="stack">
       <p class="cap after">Mobile</p>
@@ -289,7 +290,7 @@
       </ol>
     </div>
   </div>
-  <div class="p-foot"><span><b>Somerled Funnel Audit</b> · Beacon Media</span><span>5</span></div>
+  <div class="p-foot"><span><b>Somerled Funnel Audit</b> · Daniel Kelley</span><span>5</span></div>
 </section>
 
 <!-- 6. APPLICATION -->
@@ -319,13 +320,12 @@
         </div>
       </div>
       <ul class="clean check" style="font-size:10.8pt; margin-top:6px">
-        <li><b>Less friction:</b> one form in one place instead of a form, then a calendar, then another form.</li>
-        <li><b>Partial capture:</b> most people start a form and leave. Typeform saves what they entered so they can be followed up by email.</li>
-        <li><b>Built-in qualifying:</b> answers route people to the right page automatically.</li>
+        <li>From what I can tell, the biggest drop-off is the jump from the website form to the calendar, where prospects are asked for the same kind of details again. One form removes that jump.</li>
+        <li>Most people who start a form never finish it. Typeform keeps whatever they typed, which gives you an email to follow up with, and their answers send them to the right page automatically.</li>
       </ul>
     </div>
   </div>
-  <div class="p-foot"><span><b>Somerled Funnel Audit</b> · Beacon Media</span><span>6</span></div>
+  <div class="p-foot"><span><b>Somerled Funnel Audit</b> · Daniel Kelley</span><span>6</span></div>
 </section>
 
 <!-- 7. CONFIRMATION -->
@@ -335,7 +335,7 @@
     <div class="stack">
       <p class="cap before">Today</p>
       <div class="shot"><img src="img/old-confirmation.jpg" alt="Current confirmation screen"></div>
-      <div class="callout" style="margin-top:4px"><b>Why this page matters most:</b> once someone books, they shift from <b>scanner mode</b> (just looking) to <b>justification mode</b>: "Why should I actually show up to this call?" This page should answer that before they ask.</div>
+      <div class="callout" style="margin-top:4px"><b>Why this page matters most:</b> once someone books, they shift from <b>scanner mode</b> (just looking) to <b>justification mode</b>: "Why should I actually show up to this call?"</div>
     </div>
     <div class="stack">
       <p class="cap after">New page</p>
@@ -356,7 +356,7 @@
       </div>
     </div>
   </div>
-  <div class="p-foot"><span><b>Somerled Funnel Audit</b> · Beacon Media</span><span>7</span></div>
+  <div class="p-foot"><span><b>Somerled Funnel Audit</b> · Daniel Kelley</span><span>7</span></div>
 </section>
 
 <!-- 8. PRE-CALL -->
@@ -373,7 +373,7 @@
       <p class="cap after">The plan: surround them until the call</p>
       <div class="card">
         <h3>2 value-packed emails a day</h3>
-        <p style="font-size:10.8pt; color:var(--muted); margin-bottom:8px">Every day between booking and the call. Real value, not fluff, and each email quietly handles a common objection:</p>
+        <p style="font-size:10.8pt; color:var(--muted); margin-bottom:8px">Sent every day between booking and the call. Each one should teach the reader something useful and, along the way, take on a common objection:</p>
         <ul class="clean" style="font-size:10.8pt">
           <li>"It's too big an investment."</li>
           <li>"I need to think about it."</li>
@@ -383,15 +383,14 @@
       <div class="card teal">
         <h3>Booked-call retargeting ads</h3>
         <ul class="clean" style="font-size:10.8pt">
-          <li><b>10+ ad sets</b>, one ad in each</li>
-          <li><b>Frequency 15+</b></li>
-          <li><b>Audience:</b> only people who've booked a call</li>
-          <li>Every time they open their phone, they see Bri and the Somerled team.</li>
+          <li>10+ ad sets with one ad in each, running at a frequency of 15+</li>
+          <li>Shown only to people who've booked a call</li>
+          <li>The point is simple. Every time they open their phone before the call, they see Bri or someone from the Somerled team.</li>
         </ul>
       </div>
     </div>
   </div>
-  <div class="p-foot"><span><b>Somerled Funnel Audit</b> · Beacon Media</span><span>8</span></div>
+  <div class="p-foot"><span><b>Somerled Funnel Audit</b> · Daniel Kelley</span><span>8</span></div>
 </section>
 
 <!-- 9. ADS & CONTENT -->
@@ -416,22 +415,22 @@
       <div class="card">
         <h3>Ads</h3>
         <ul class="clean" style="font-size:10.8pt">
-          <li><b>Add static reels:</b> currently none in the library.</li>
-          <li><b>More testimonial ads</b> for retargeting. Only one exists today, and real client results are Somerled's strongest asset.</li>
-          <li><b>Test top Instagram posts as ads.</b> The organic short-form content is strong; put budget behind the winners.</li>
+          <li>There are no static reels in the library yet. That's the easiest gap to fill.</li>
+          <li>Only one testimonial ad exists. Client results are probably Somerled's best selling point, so I'd make several more for retargeting.</li>
+          <li>Your Instagram short-form is good. Test the best-performing posts as ads.</li>
         </ul>
       </div>
       <div class="card">
         <h3>Content</h3>
         <ul class="clean" style="font-size:10.8pt">
-          <li><b>Start long-form YouTube.</b> Property breakdowns, market research and before/afters nurture prospects while they decide.</li>
-          <li><b>Build a masterclass</b> that walks owners through strategic STR design, and use it in ads and emails.</li>
-          <li><b>Start regular marketing emails.</b> Today, people who show interest receive no value-packed follow-up.</li>
+          <li>Start a long-form YouTube channel. Property breakdowns and before/afters give prospects something to watch while they decide.</li>
+          <li>Build a masterclass on strategic STR design that you can run in ads and send in emails.</li>
+          <li>After I booked, I didn't get a single marketing email. A regular email schedule would fix that.</li>
         </ul>
       </div>
     </div>
   </div>
-  <div class="p-foot"><span><b>Somerled Funnel Audit</b> · Beacon Media</span><span>9</span></div>
+  <div class="p-foot"><span><b>Somerled Funnel Audit</b> · Daniel Kelley</span><span>9</span></div>
 </section>
 
 <!-- 10. ROLLOUT -->
@@ -472,7 +471,7 @@
       <p class="goal"><b>Goal:</b> more qualified owners entering the funnel.</p>
     </div>
   </div>
-  <div class="p-foot"><span><b>Somerled Funnel Audit</b> · Beacon Media</span><span>10</span></div>
+  <div class="p-foot"><span><b>Somerled Funnel Audit</b> · Daniel Kelley</span><span>10</span></div>
 </section>
 
 <!-- 11. NEXT STEP -->
@@ -482,8 +481,8 @@
     <div>
       <p class="kicker">Next Step</p>
       <h2 class="p-title" style="font-size:40pt; margin-top:8px">Let's Walk Through It Together</h2>
-      <p style="font-size:14pt; color:rgba(255,255,255,.85); margin-top:16px; max-width:5in">The landing, confirmation and not-a-fit pages are already built. On a 30-minute call we'll walk through the new funnel, answer questions and map out launch.</p>
-      <div style="margin-top:26px; display:inline-block; background:var(--coral); color:#fff; font-family:var(--font-heading); font-weight:700; font-size:14pt; padding:14px 26px; border-radius:12px;">Reply to Daniel to book your walkthrough →</div>
+      <p style="font-size:14pt; color:rgba(255,255,255,.85); margin-top:16px; max-width:5in">I've already built the landing, confirmation and not-a-fit pages. Give me 30 minutes and I'll walk you through them, then we can plan the launch together.</p>
+      <div style="margin-top:26px; display:inline-block; background:var(--coral); color:#fff; font-family:var(--font-heading); font-weight:700; font-size:14pt; padding:14px 26px; border-radius:12px;">Reply to book your walkthrough →</div>
     </div>
     <div class="stack" style="gap:12px">
       <div class="card" style="background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.18); color:#fff">
@@ -505,7 +504,7 @@
       </div>
     </div>
   </div>
-  <div class="p-foot"><span><b>Somerled Funnel Audit</b> · Beacon Media</span><span>11</span></div>
+  <div class="p-foot"><span><b>Somerled Funnel Audit</b> · Daniel Kelley</span><span>11</span></div>
 </section>
 
 </body>
