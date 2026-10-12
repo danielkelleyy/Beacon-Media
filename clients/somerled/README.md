@@ -4,7 +4,7 @@ Three self-contained HTML pages built from the Somerled marketing audit, ready t
 
 | File | Purpose |
 | --- | --- |
-| `landing.html` | Eyebrow → headline → subheadline → VSL → "Free Design Strategy" (Typeform popup) → Featured In logos → 6 testimonial videos → repeat CTA |
+| `landing.html` | Eyebrow → headline → subheadline → VSL → "Apply To Work With Us 1 on 1" (Typeform popup) → Featured In logos → 6 testimonial videos → repeat CTA |
 | `confirmation.html` | Qualified applicants: confirm-your-call headline, confirmation video, 5 objection-handling breakout videos |
 | `landing-mobile.html` | Phone-width-only copy of the landing page for client review (testimonials stacked; locked to a 430px column even on desktop). Preview image: `previews/landing-mobile.png` |
 | `disqualification.html` | Not-a-fit applicants: respectful message plus portfolio and free-resource links |
@@ -13,7 +13,7 @@ Three self-contained HTML pages built from the Somerled marketing audit, ready t
 ## The flow
 
 ```
-Landing page  ──"Free Design Strategy"──▶  Typeform popup (one form, partial responses on)
+Landing page  ──"Apply To Work With Us 1 on 1"──▶  Typeform popup (one form, partial responses on)
                                              ├── Qualified    → confirmation.html (with booking step)
                                              └── Disqualified → disqualification.html
 ```
