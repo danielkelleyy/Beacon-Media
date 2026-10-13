@@ -6,6 +6,8 @@ Three self-contained HTML pages (no build step, no framework) designed to be pas
 - `pages/confirmation.html` — shown to applicants Typeform marks as qualified.
 - `pages/disqualification.html` — shown to applicants Typeform marks as not a fit.
 
+> **Client funnels:** `funnels/michael-ketchen/` holds the Bet On Yourself webinar funnel (5 pages + email/SMS/VIP copy). See its own README.
+
 Each file is fully self-contained (inline CSS, minimal inline JS) so you can copy-paste the whole file as-is — no assets to upload except your logo and images (see below).
 
 ## The flow
